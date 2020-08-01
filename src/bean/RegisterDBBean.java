@@ -19,7 +19,7 @@ public class RegisterDBBean {
 		public ArrayList<ResultBean> getResult(){
 			ArrayList<ResultBean> list = new ArrayList<>();
 			
-			ResultBean e1 = new ResultBean();
+			ResultBean e1 = new ResultBean("ok");
 			
 			list.add(e1);
 			

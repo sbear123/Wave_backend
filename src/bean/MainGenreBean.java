@@ -6,6 +6,14 @@ public class MainGenreBean {
 	private int index;
 	private String mainGenreName;
 	
+	public MainGenreBean () {}
+	
+	public MainGenreBean (int mainGenreId, int index, String mainGenreName) {
+		this.index = index;
+		this.mainGenreId = mainGenreId;
+		this.mainGenreName = mainGenreName;
+	}
+	
 	public int getMainGenreId() {
 		return mainGenreId;
 	}
