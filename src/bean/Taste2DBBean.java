@@ -16,7 +16,7 @@ public class Taste2DBBean {
 		return instance;
 	}
 	
-	public ArrayList<SubGenreBean> getCrews(){
+	public ArrayList<SubGenreBean> getFeels(){
 		ArrayList<SubGenreBean> list = new ArrayList<>();
 		
 		SubGenreBean e1 = new SubGenreBean(1, 1, "신나는");
