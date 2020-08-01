@@ -11,6 +11,19 @@ public class PlayListBean {
 	private List<SubGenreBean> subGenres;
 	private String userId;
 	
+	public PlayListBean() {}
+		
+	public PlayListBean(int listId, String listName, List<SongBean> songs, MainGenreBean mainGenre,
+			List<SubGenreBean> subGenres, String userId) {
+		
+		this.listId = listId;
+		this.listName = listName;
+		this.songs = songs;
+		this.mainGenre = mainGenre;
+		this.subGenres = subGenres;
+		this.userId = userId;
+	}
+
 	public int getListId() {
 		return listId;
 	}
