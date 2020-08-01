@@ -6,6 +6,14 @@ public class SubGenreBean {
 	private int index;
 	private String subGenreName;
 	
+	public SubGenreBean() {}
+	
+	public SubGenreBean(int subGenreId, int index, String subGenreName) {
+		this.index = index;
+		this.subGenreId = subGenreId;
+		this.subGenreName = subGenreName;
+	}
+	
 	public int getSubGenreId() {
 		return subGenreId;
 	}

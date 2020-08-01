@@ -18,7 +18,7 @@ public class ListDBBean {
 	
 	public ArrayList<RecommandedPlayListBean> getCrews(){
 		ArrayList<RecommandedPlayListBean> list = new ArrayList<>();
-		RecommandedPlayListBean name;
+		
 			
 		
 		return list;

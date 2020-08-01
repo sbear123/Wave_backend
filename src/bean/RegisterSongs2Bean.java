@@ -5,6 +5,9 @@ import java.util.List;
 public class RegisterSongs2Bean {
 	
 	private List<RegisterSong2Bean> list;
+	
+	public RegisterSongs2Bean() {}
+	
 
 	public List<RegisterSong2Bean> getList() {
 		return list;
