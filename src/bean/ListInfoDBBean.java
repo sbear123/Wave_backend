@@ -28,9 +28,20 @@ public class ListInfoDBBean {
 			songs.add(song2);
 			songs.add(song3);
 			
+			MainGenreBean MainGenre = new MainGenreBean(1, 1, "메인장르1");
+			
+			List<SubGenreBean> SubGenres = new ArrayList<>();
+			SubGenreBean sub1 = new SubGenreBean(1 ,1,"서브장르1");
+			SubGenreBean sub2 = new SubGenreBean(2 ,2,"서브장르2");
+			
+			SubGenres.add(sub1);
+			SubGenres.add(sub2);
+			
 			ArrayList<PlayListBean> list = new ArrayList<>();
 			
-			PlayListBean list1 = new PlayListBean(1, "리스트 이름", songs, , , "유저아이디" );
+			PlayListBean list1 = new PlayListBean(1, "리스트 이름", songs, MainGenre, SubGenres, "유저아이디" );
+			
+			list.add(list1);
 				
 			
 			return list;
