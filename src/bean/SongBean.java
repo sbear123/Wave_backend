@@ -9,6 +9,19 @@ public class SongBean {
 	private String lyric;
 	private String songUrl;
 	
+	public SongBean(){}
+	
+	
+	public SongBean(int songId, String songName, String jacketUrl, String artist, String lyric, String songUrl) {
+		this.songId = songId;
+		this.songName = songName;
+		this.jacketUrl = jacketUrl;
+		this.artist = artist;
+		this.lyric = lyric;
+		this.songUrl = songUrl;
+	}
+
+
 	public int getSongId() {
 		return songId;
 	}

@@ -16,7 +16,7 @@ public class SongsJsonAction implements Action {
 	@Override
 	public String requestProcess(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		SongsDBBean db = SongsDBBean.getInstance();
-		ArrayList<SongBean> list = db.getCrews();
+		ArrayList<SongBean> list = db.getSong();
 		
 		Gson gson = new Gson();
 		String result = gson.toJson(list).toString();

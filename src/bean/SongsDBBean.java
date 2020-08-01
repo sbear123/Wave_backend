@@ -16,10 +16,12 @@ public class SongsDBBean {
 			return instance;
 		}
 		
-		public ArrayList<SongBean> getCrews(){
+		public ArrayList<SongBean> getSong(){
 			ArrayList<SongBean> list = new ArrayList<>();
-			SongBean name;
+
+			SongBean song1 = new SongBean(1,"노래제목","재킷사진","가수","가사","노래주소");
 				
+			list.add(song1);
 			
 			return list;
 		}
