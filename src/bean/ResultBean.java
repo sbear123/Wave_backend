@@ -6,4 +6,8 @@ public class ResultBean {
 	public ResultBean(String result) {
 		this.result = result;
 	}
+	
+	public ResultBean() {
+		this.result = "fail";
+	}
 }
