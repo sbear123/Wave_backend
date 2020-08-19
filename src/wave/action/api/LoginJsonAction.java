@@ -8,7 +8,6 @@ import org.apache.commons.io.IOUtils;
 
 import com.google.gson.Gson;
 
-import bean.LoginBean;
 import bean.LoginDBBean;
 import bean.ResultBean;
 import bean.UserBean;
