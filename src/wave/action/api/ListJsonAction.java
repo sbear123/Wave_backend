@@ -16,7 +16,7 @@ public class ListJsonAction implements Action {
 	@Override
 	public String requestProcess(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		ListDBBean db = ListDBBean.getInstance();
-		ArrayList<RecommandedPlayListBean> list = db.getCrews();
+		ArrayList<RecommandedPlayListBean> list = db.getRecommandedList();
 		
 		Gson gson = new Gson();
 		String result = gson.toJson(list).toString();
