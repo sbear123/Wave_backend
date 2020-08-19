@@ -16,7 +16,7 @@ public class Taste1DBBean {
 		return instance;
 	}
 	
-	public ArrayList<MainGenreBean> getCrews(){
+	public ArrayList<MainGenreBean> getFeels(){
 		ArrayList<MainGenreBean> list = new ArrayList<>();
 		
 		MainGenreBean e1 = new MainGenreBean(1, 1, "발라드");

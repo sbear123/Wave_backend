@@ -16,7 +16,7 @@ public class Taste1JsonAction implements Action {
 	@Override
 	public String requestProcess(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		Taste1DBBean db = Taste1DBBean.getInstance();
-		ArrayList<MainGenreBean> list = db.getCrews();
+		ArrayList<MainGenreBean> list = db.getFeels();
 		
 		Gson gson = new Gson();
 		String result = gson.toJson(list).toString();

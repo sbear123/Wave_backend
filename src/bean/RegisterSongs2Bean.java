@@ -8,6 +8,9 @@ public class RegisterSongs2Bean {
 	
 	public RegisterSongs2Bean() {}
 	
+	public RegisterSongs2Bean(List<RegisterSong2Bean> list) {
+		this.list = list;
+	}
 
 	public List<RegisterSong2Bean> getList() {
 		return list;
