@@ -1,12 +1,8 @@
 package bean;
 
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.util.ArrayList;
-
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.sql.DataSource;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class RegisterDBBean extends CommonDBBean {
 	//Singleton
@@ -16,13 +12,27 @@ public class RegisterDBBean extends CommonDBBean {
 			return instance;
 		}
 		
-		public ArrayList<ResultBean> getResult(){
-			ArrayList<ResultBean> list = new ArrayList<>();
+		public int register(UserBean user) {
+			int result = 0;
+			Connection conn = getConnection();
+			if(conn==null) return 0;
 			
-			ResultBean e1 = new ResultBean("ok");
-			
-			list.add(e1);
-			
-			return list;
+			String sql = "INSERT INTO user (userid, password, name) VALUES ( ? , ? , ? )";
+			try {
+				PreparedStatement pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, user.getUserId());
+				pstmt.setString(2, user.getPassword());
+				pstmt.setString(3, user.getName());
+				
+				result = pstmt.executeUpdate(sql);
+				if(pstmt!=null) pstmt.close();
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	
+			closeConnection(conn);
+			return result;
 		}
 }

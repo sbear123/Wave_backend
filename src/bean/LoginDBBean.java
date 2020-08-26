@@ -17,6 +17,7 @@ public class LoginDBBean extends CommonDBBean{
 		UserBean user=null;
 		Connection conn = getConnection();
 		if(conn==null) return null;
+		System.out.println("conn");
 		
 		String sql = "select * from user where userid=? and password=?";
 		try {
@@ -29,6 +30,8 @@ public class LoginDBBean extends CommonDBBean{
 				user.setUserId(rs.getString("userid"));
 				user.setPassword(rs.getString("password"));
 			}
+			rs.close();
+			pstmt.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
