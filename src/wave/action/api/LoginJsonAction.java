@@ -19,13 +19,11 @@ public class LoginJsonAction implements Action {
 	public String requestProcess(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		
 		Gson gson = new Gson();
-		ResultBean result = new ResultBean(); // return에 따라 달라지는 부분 
+		ResultBean result = new ResultBean(); // return�뿉 �뵲�씪 �떖�씪吏��뒗 遺�遺� 
 		
 		// input
 		String str = IOUtils.toString(request.getReader());
-		UserBean requestUser = gson.fromJson(str, UserBean.class); // input에 따라 달라지는 부분 
-		
-		
+		UserBean requestUser = gson.fromJson(str, UserBean.class); // input�뿉 �뵲�씪 �떖�씪吏��뒗 遺�遺� 
 		
 		UserBean user = LoginDBBean.getInstance().login(requestUser.getUserId(), requestUser.getPassword());
 		if(user!=null)
