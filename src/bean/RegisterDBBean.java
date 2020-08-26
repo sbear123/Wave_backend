@@ -8,7 +8,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-public class RegisterDBBean {
+public class RegisterDBBean extends CommonDBBean {
 	//Singleton
 		private static RegisterDBBean instance = new RegisterDBBean();
 		private RegisterDBBean() {}

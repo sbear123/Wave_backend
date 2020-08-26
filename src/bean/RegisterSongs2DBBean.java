@@ -9,7 +9,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-public class RegisterSongs2DBBean {
+public class RegisterSongs2DBBean extends CommonDBBean {
 	//Singleton
 	private static RegisterSongs2DBBean instance = new RegisterSongs2DBBean();
 	private RegisterSongs2DBBean() {}

@@ -9,7 +9,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-public class ListInfoDBBean {
+public class ListInfoDBBean extends CommonDBBean {
 	//Singleton
 		private static ListInfoDBBean instance = new ListInfoDBBean();
 		private ListInfoDBBean() {}

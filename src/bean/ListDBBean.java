@@ -8,7 +8,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-public class ListDBBean {
+public class ListDBBean extends CommonDBBean {
 	//Singleton
 	private static ListDBBean instance = new ListDBBean();
 	private ListDBBean() {}
