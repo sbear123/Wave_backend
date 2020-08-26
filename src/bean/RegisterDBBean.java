@@ -16,15 +16,16 @@ public class RegisterDBBean extends CommonDBBean {
 			int result = 0;
 			Connection conn = getConnection();
 			if(conn==null) return 0;
+		
 			
-			String sql = "INSERT INTO user (userid, password, name) VALUES ( ? , ? , ? )";
+			String sql = "insert into user(userid, password, name) values (?,?,?)";
 			try {
 				PreparedStatement pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, user.getUserId());
 				pstmt.setString(2, user.getPassword());
 				pstmt.setString(3, user.getName());
 				
-				result = pstmt.executeUpdate(sql);
+				result = pstmt.executeUpdate();
 				if(pstmt!=null) pstmt.close();
 				
 			} catch (SQLException e) {
