@@ -15,8 +15,8 @@ public class ListDBBean extends CommonDBBean {
 	public static ListDBBean getInstance() {
 		return instance;
 	}
-	public ArrayList<RecommandedPlayListBean> getRecommandedList() {
-ArrayList<RecommandedPlayListBean> list = new ArrayList<>();
+	public ArrayList<PlayListBean> getRecommandedList() {
+ArrayList<PlayListBean> list = new ArrayList<>();
 		
 		return list;
 	}

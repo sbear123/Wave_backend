@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 
 import bean.ListInfoDBBean;
-import bean.PlayListBean;
+import bean.PlayListSongBean;
 import wave.action.Action;
 
 public class ListInfoJsonAction implements Action {
@@ -16,7 +16,7 @@ public class ListInfoJsonAction implements Action {
 	@Override
 	public String requestProcess(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		ListInfoDBBean db = ListInfoDBBean.getInstance();
-		ArrayList<PlayListBean> list = db.getList();
+		ArrayList<PlayListSongBean> list = db.getList();
 		
 		Gson gson = new Gson();
 		String result = gson.toJson(list).toString();

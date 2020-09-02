@@ -17,7 +17,7 @@ public class ListInfoDBBean extends CommonDBBean {
 			return instance;
 		}
 		
-		public ArrayList<PlayListBean> getList(){
+		public ArrayList<PlayListSongBean> getList(){
 			
 			List<SongBean> songs = new ArrayList<>();
 			SongBean song1 = new SongBean(1,"노래제목1","재킷사진1","가수1","가사1","노래주소1");
@@ -37,9 +37,9 @@ public class ListInfoDBBean extends CommonDBBean {
 			SubGenres.add(sub1);
 			SubGenres.add(sub2);
 			
-			ArrayList<PlayListBean> list = new ArrayList<>();
+			ArrayList<PlayListSongBean> list = new ArrayList<>();
 			
-			PlayListBean list1 = new PlayListBean(1, "리스트 이름", songs, MainGenre, SubGenres, "유저아이디" );
+			PlayListSongBean list1 = new PlayListSongBean(1, "리스트 이름", songs, MainGenre, SubGenres, "유저아이디" );
 			
 			list.add(list1);
 				
