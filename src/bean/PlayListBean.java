@@ -12,11 +12,12 @@ public class PlayListBean {
 	private String text;
 	
 	private List<SongBean> songs;
+	private String maingenre;
 	private List<SubGenreBean> subgenre;
 	
 	public PlayListBean() {}
 		
-	public PlayListBean(int playlistid, String userid, String date, String title, String tag, String text, List<SongBean> songs, List<SubGenreBean> subgenre) {
+	public PlayListBean(int playlistid, String userid, String date, String title, String tag, String text, List<SongBean> songs, List<SubGenreBean> subgenre, String maingenre) {
 		this.date = date;
 		this.playlistid = playlistid;
 		this.songs = songs;
@@ -25,7 +26,16 @@ public class PlayListBean {
 		this.text = text;
 		this.title = title;
 		this.userid = userid;
+		this.maingenre = maingenre;
 		
+	}
+
+	public String getMaingenre() {
+		return maingenre;
+	}
+
+	public void setMaingenre(String maingenre) {
+		this.maingenre = maingenre;
 	}
 
 	public int getPlaylistid() {
