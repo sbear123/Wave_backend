@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
-import bean.RegisterSongs1Bean;
+import bean.RegisterSongBean;
 import bean.RegisterSongs1DBBean;
 import wave.action.Action;
 
@@ -16,7 +16,7 @@ public class RegisterSongs1JsonAction implements Action {
 	@Override
 	public String requestProcess(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		RegisterSongs1DBBean db = RegisterSongs1DBBean.getInstance();
-		ArrayList<RegisterSongs1Bean> list = db.getCrews();
+		ArrayList<RegisterSongBean> list = db.getCrews();
 		
 		Gson gson = new Gson();
 		String result = gson.toJson(list).toString();
