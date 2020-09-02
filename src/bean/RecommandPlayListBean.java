@@ -2,13 +2,13 @@ package bean;
 
 import java.util.List;
 
-public class RecommandedPlayListBean {
+public class RecommandPlayListBean {
 
 	private List<PlayListBean> lists;
 	
-	public RecommandedPlayListBean() {}
+	public RecommandPlayListBean() {}
 	
-	public RecommandedPlayListBean(List<PlayListBean> lists) {
+	public RecommandPlayListBean(List<PlayListBean> lists) {
 		this.lists = lists;
 	}
 

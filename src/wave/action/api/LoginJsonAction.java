@@ -25,7 +25,7 @@ public class LoginJsonAction implements Action {
 		String str = IOUtils.toString(request.getReader());
 		UserBean requestUser = gson.fromJson(str, UserBean.class); // input�뿉 �뵲�씪 �떖�씪吏��뒗 遺�遺� 
 		
-		UserBean user = LoginDBBean.getInstance().login(requestUser.getUserId(), requestUser.getPassword());
+		UserBean user = LoginDBBean.getInstance().login(requestUser.getUserid(), requestUser.getPassword());
 		if(user!=null)
 			result.result="ok";
 		

@@ -16,9 +16,9 @@ public class RegisterSongs1DBBean extends CommonDBBean {
 		return instance;
 	}
 	
-	public ArrayList<RegisterSongs1Bean> getCrews(){
-		ArrayList<RegisterSongs1Bean> list = new ArrayList<>();
-		RegisterSongs1Bean name;
+	public ArrayList<RegisterSongBean> getCrews(){
+		ArrayList<RegisterSongBean> list = new ArrayList<>();
+		RegisterSongBean name;
 		
 		return list;
 	}

@@ -4,62 +4,93 @@ import java.util.List;
 
 public class PlayListBean {
 	
-	private int listId;
-	private String listName;
+	private int playlistid;
+	private String userid;
+	private String date;
+	private String title;
+	private String tag;
+	private String text;
+	
 	private List<SongBean> songs;
-	private MainGenreBean mainGenre;
-	private List<SubGenreBean> subGenres;
-	private String userId;
+	private List<SubGenreBean> subgenre;
 	
 	public PlayListBean() {}
 		
-	public PlayListBean(int listId, String listName, List<SongBean> songs, MainGenreBean mainGenre,
-			List<SubGenreBean> subGenres, String userId) {
-		
-		this.listId = listId;
-		this.listName = listName;
+	public PlayListBean(int playlistid, String userid, String date, String title, String tag, String text, List<SongBean> songs, List<SubGenreBean> subgenre) {
+		this.date = date;
+		this.playlistid = playlistid;
 		this.songs = songs;
-		this.mainGenre = mainGenre;
-		this.subGenres = subGenres;
-		this.userId = userId;
+		this.subgenre = subgenre;
+		this.tag = tag;
+		this.text = text;
+		this.title = title;
+		this.userid = userid;
+		
 	}
 
-	public int getListId() {
-		return listId;
+	public int getPlaylistid() {
+		return playlistid;
 	}
-	public void setListId(int listId) {
-		this.listId = listId;
+
+	public void setPlaylistid(int playlistid) {
+		this.playlistid = playlistid;
 	}
-	public String getListName() {
-		return listName;
+
+	public String getUserid() {
+		return userid;
 	}
-	public void setListName(String listName) {
-		this.listName = listName;
+
+	public void setUserid(String userid) {
+		this.userid = userid;
 	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getTag() {
+		return tag;
+	}
+
+	public void setTag(String tag) {
+		this.tag = tag;
+	}
+
+	public String getText() {
+		return text;
+	}
+
+	public void setText(String text) {
+		this.text = text;
+	}
+
 	public List<SongBean> getSongs() {
 		return songs;
 	}
+
 	public void setSongs(List<SongBean> songs) {
 		this.songs = songs;
 	}
-	public MainGenreBean getMainGenre() {
-		return mainGenre;
+
+	public List<SubGenreBean> getSubgenre() {
+		return subgenre;
 	}
-	public void setMainGenre(MainGenreBean mainGenre) {
-		this.mainGenre = mainGenre;
+
+	public void setSubgenre(List<SubGenreBean> subgenre) {
+		this.subgenre = subgenre;
 	}
-	public List<SubGenreBean> getSubGenres() {
-		return subGenres;
-	}
-	public void setSubGenres(List<SubGenreBean> subGenres) {
-		this.subGenres = subGenres;
-	}
-	public String getUserId() {
-		return userId;
-	}
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-	
+
 	
 }
