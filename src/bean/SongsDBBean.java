@@ -19,7 +19,7 @@ public class SongsDBBean extends CommonDBBean {
 		public ArrayList<SongBean> getSong(){
 			ArrayList<SongBean> list = new ArrayList<>();
 
-			SongBean song1 = new SongBean(1,"³ë·¡Á¦¸ñ","ÀçÅ¶»çÁø","°¡¼ö","°¡»ç","³ë·¡ÁÖ¼Ò");
+			SongBean song1 = new SongBean(1, "íƒ€ì´í‹€", 1, 1, 1, 1, "ë…¸ë˜ì´ë¦„", "ê°€ì‚¬", "ë…¸ë˜ì£¼ì†Œ", "ì—¬ì", 19, "ì‘ê³¡ê°€");
 				
 			list.add(song1);
 			
