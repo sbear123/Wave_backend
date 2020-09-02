@@ -19,15 +19,15 @@ public class Taste1DBBean extends CommonDBBean {
 	public ArrayList<MainGenreBean> getFeels(){
 		ArrayList<MainGenreBean> list = new ArrayList<>();
 		
-		MainGenreBean e1 = new MainGenreBean(1, 1, "諛쒕씪�뱶");
-		MainGenreBean e2 = new MainGenreBean(2, 2, "�옪");
-		MainGenreBean e3 = new MainGenreBean(3, 3, "�븘�씠�룎�끂�옒");
-		MainGenreBean e4 = new MainGenreBean(4, 4, "�옱利�");
-		MainGenreBean e5 = new MainGenreBean(5, 5, "POP");
-		MainGenreBean e6 = new MainGenreBean(6, 6, "�겢�옒�떇");
-		MainGenreBean e7 = new MainGenreBean(7, 7, "�씫");
-		MainGenreBean e8 = new MainGenreBean(8, 8, "援��븙");
-		MainGenreBean e9 = new MainGenreBean(9, 9, "紐곕씪�븷嫄� �뾾�뼱");
+		MainGenreBean e1 = new MainGenreBean(1, "�帣1");
+		MainGenreBean e2 = new MainGenreBean(2, "�帣2");
+		MainGenreBean e3 = new MainGenreBean(3, "�帣3");
+		MainGenreBean e4 = new MainGenreBean(4, "�帣4");
+		MainGenreBean e5 = new MainGenreBean(5, "�帣5");
+		MainGenreBean e6 = new MainGenreBean(6, "�帣6");
+		MainGenreBean e7 = new MainGenreBean(7, "�帣7");
+		MainGenreBean e8 = new MainGenreBean(8, "�帣8");
+		MainGenreBean e9 = new MainGenreBean(9, "�帣9");
 		
 		list.add(e1);
 		list.add(e2);
