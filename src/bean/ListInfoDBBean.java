@@ -17,29 +17,29 @@ public class ListInfoDBBean extends CommonDBBean {
 			return instance;
 		}
 		
-		public ArrayList<PlayListSongBean> getList(){
+		public ArrayList<PlayListBean> getList(){
 			
 			List<SongBean> songs = new ArrayList<>();
-			SongBean song1 = new SongBean(1,"³ë·¡Á¦¸ñ1","ÀçÅ¶»çÁø1","°¡¼ö1","°¡»ç1","³ë·¡ÁÖ¼Ò1");
-			SongBean song2 = new SongBean(2,"³ë·¡Á¦¸ñ2","ÀçÅ¶»çÁø2","°¡¼ö2","°¡»ç2","³ë·¡ÁÖ¼Ò2");
-			SongBean song3 = new SongBean(3,"³ë·¡Á¦¸ñ3","ÀçÅ¶»çÁø3","°¡¼ö3","°¡»ç3","³ë·¡ÁÖ¼Ò3");
+			SongBean song1 = new SongBean(1,"ï¿½ë·¡ï¿½ï¿½ï¿½ï¿½1","ï¿½ï¿½Å¶ï¿½ï¿½ï¿½ï¿½1","ï¿½ï¿½ï¿½ï¿½1","ï¿½ï¿½ï¿½ï¿½1","ï¿½ë·¡ï¿½Ö¼ï¿½1");
+			SongBean song2 = new SongBean(2,"ï¿½ë·¡ï¿½ï¿½ï¿½ï¿½2","ï¿½ï¿½Å¶ï¿½ï¿½ï¿½ï¿½2","ï¿½ï¿½ï¿½ï¿½2","ï¿½ï¿½ï¿½ï¿½2","ï¿½ë·¡ï¿½Ö¼ï¿½2");
+			SongBean song3 = new SongBean(3,"ï¿½ë·¡ï¿½ï¿½ï¿½ï¿½3","ï¿½ï¿½Å¶ï¿½ï¿½ï¿½ï¿½3","ï¿½ï¿½ï¿½ï¿½3","ï¿½ï¿½ï¿½ï¿½3","ï¿½ë·¡ï¿½Ö¼ï¿½3");
 			
 			songs.add(song1);
 			songs.add(song2);
 			songs.add(song3);
 			
-			MainGenreBean MainGenre = new MainGenreBean(1, 1, "¸ÞÀÎÀå¸£1");
+			MainGenreBean MainGenre = new MainGenreBean(1, 1, "ï¿½ï¿½ï¿½ï¿½ï¿½å¸£1");
 			
 			List<SubGenreBean> SubGenres = new ArrayList<>();
-			SubGenreBean sub1 = new SubGenreBean(1 ,1,"¼­ºêÀå¸£1");
-			SubGenreBean sub2 = new SubGenreBean(2 ,2,"¼­ºêÀå¸£2");
+			SubGenreBean sub1 = new SubGenreBean(1 ,1,"ï¿½ï¿½ï¿½ï¿½ï¿½å¸£1");
+			SubGenreBean sub2 = new SubGenreBean(2 ,2,"ï¿½ï¿½ï¿½ï¿½ï¿½å¸£2");
 			
 			SubGenres.add(sub1);
 			SubGenres.add(sub2);
 			
-			ArrayList<PlayListSongBean> list = new ArrayList<>();
+			ArrayList<PlayListBean> list = new ArrayList<>();
 			
-			PlayListSongBean list1 = new PlayListSongBean(1, "¸®½ºÆ® ÀÌ¸§", songs, MainGenre, SubGenres, "À¯Àú¾ÆÀÌµð" );
+			PlayListBean list1 = new PlayListBean(1, "ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ì¸ï¿½", songs, MainGenre, SubGenres, "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½" );
 			
 			list.add(list1);
 				

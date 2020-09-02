@@ -21,7 +21,7 @@ public class RegisterDBBean extends CommonDBBean {
 			String sql = "insert into user(userid, password, name) values (?,?,?)";
 			try {
 				PreparedStatement pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, user.getUserId());
+				pstmt.setString(1, user.getUserid());
 				pstmt.setString(2, user.getPassword());
 				pstmt.setString(3, user.getName());
 				
