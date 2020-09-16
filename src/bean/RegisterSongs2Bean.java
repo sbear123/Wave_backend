@@ -4,19 +4,19 @@ import java.util.List;
 
 public class RegisterSongs2Bean {
 	
-	private List<RegisterSong2Bean> list;
+	private List<UserFavoritesBean> list;
 	
 	public RegisterSongs2Bean() {}
 	
-	public RegisterSongs2Bean(List<RegisterSong2Bean> list) {
+	public RegisterSongs2Bean(List<UserFavoritesBean> list) {
 		this.list = list;
 	}
 
-	public List<RegisterSong2Bean> getList() {
+	public List<UserFavoritesBean> getList() {
 		return list;
 	}
 
-	public void setList(List<RegisterSong2Bean> list) {
+	public void setList(List<UserFavoritesBean> list) {
 		this.list = list;
 	}
 }
