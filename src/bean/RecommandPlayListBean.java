@@ -8,17 +8,17 @@ public class RecommandPlayListBean {
 	
 	public RecommandPlayListBean() {}
 	
-	public RecommandPlayListBean(List<PlayListBean> lists) {
-		this.list = lists;
-		this.genreName = lists.get(1).getMaingenre();
+	public RecommandPlayListBean(List<PlayListBean> list) {
+		this.list = list;
+		this.genreName = list.get(1).getMaingenre();
 	}
 
 	public List<PlayListBean> getList() {
 		return list;
 	}
 
-	public void setList(List<PlayListBean> lists) {
-		this.list = lists;
+	public void setList(List<PlayListBean> list) {
+		this.list = list;
 	}
 
 	public String getGenreName() {
