@@ -24,7 +24,7 @@ public class RegisterDBBean extends CommonDBBean {
 				pstmt.setString(1, user.getUserId());
 				pstmt.setString(2, user.getPassword());
 				pstmt.setString(3, user.getName());
-				pstmt.setString(5, user.getEmail());
+				pstmt.setString(4, user.getEmail());
 				
 				result = pstmt.executeUpdate();
 				if(pstmt!=null) pstmt.close();
