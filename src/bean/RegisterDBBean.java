@@ -18,13 +18,12 @@ public class RegisterDBBean extends CommonDBBean {
 			if(conn==null) return 0;
 		
 			
-			String sql = "insert into user(userid, password, name, favorite, email) values (?,?,?,?,?)";
+			String sql = "insert into user(userid, password, name, email) values (?,?,?,?)";
 			try {
 				PreparedStatement pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, user.getUserId());
 				pstmt.setString(2, user.getPassword());
 				pstmt.setString(3, user.getName());
-				pstmt.setString(4, user.getFavorite());
 				pstmt.setString(5, user.getEmail());
 				
 				result = pstmt.executeUpdate();
