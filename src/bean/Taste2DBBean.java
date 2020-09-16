@@ -19,15 +19,15 @@ public class Taste2DBBean extends CommonDBBean {
 	public ArrayList<SubGenreBean> getFeels(){
 		ArrayList<SubGenreBean> list = new ArrayList<>();
 		
-		SubGenreBean e1 = new SubGenreBean(1, "서브장르1", 1);
-		SubGenreBean e2 = new SubGenreBean(2, "서브장르2", 1);
-		SubGenreBean e3 = new SubGenreBean(3, "서브장르3", 1);
-		SubGenreBean e4 = new SubGenreBean(4, "서브장르4", 1);
-		SubGenreBean e5 = new SubGenreBean(5, "서브장르5", 1);
-		SubGenreBean e6 = new SubGenreBean(6, "서브장르6", 1);
-		SubGenreBean e7 = new SubGenreBean(7, "서브장르7", 1);
-		SubGenreBean e8 = new SubGenreBean(8, "서브장르8", 1);
-		SubGenreBean e9 = new SubGenreBean(9, "서브장르9", 1);
+		SubGenreBean e1 = new SubGenreBean(1, "한요한", 1);
+		SubGenreBean e2 = new SubGenreBean(2, "잘생겼지롱", 1);
+		SubGenreBean e3 = new SubGenreBean(3, "범퍼카", 1);
+		SubGenreBean e4 = new SubGenreBean(4, "오아시스", 1);
+		SubGenreBean e5 = new SubGenreBean(5, "장범준", 1);
+		SubGenreBean e6 = new SubGenreBean(6, "홍대", 1);
+		SubGenreBean e7 = new SubGenreBean(7, "와", 1);
+		SubGenreBean e8 = new SubGenreBean(8, "건대사이", 1);
+		SubGenreBean e9 = new SubGenreBean(9, "눈누난나", 1);
 		
 		list.add(e1);
 		list.add(e2);
