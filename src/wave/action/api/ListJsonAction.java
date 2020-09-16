@@ -15,11 +15,14 @@ public class ListJsonAction implements Action {
 
 	@Override
 	public String requestProcess(HttpServletRequest request, HttpServletResponse response) throws Throwable {
+		
 		ListDBBean db = ListDBBean.getInstance();
 		ArrayList<RecommandPlayListBean> list = db.getRecommandedList();
 		
 		Gson gson = new Gson();
 		String result = gson.toJson(list).toString();
+		System.out.println(result);
+		
 		return result;
 	}
 

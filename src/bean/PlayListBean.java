@@ -8,26 +8,21 @@ public class PlayListBean {
 	private String userid;
 	private String date;
 	private String title;
-	private String tag;
-	private String text;
 	
 	private List<SongBean> songs;
 	private String maingenre;
-	private List<SubGenreBean> subgenre;
+	private String subgenre;
 	
 	public PlayListBean() {}
 		
-	public PlayListBean(int playlistid, String userid, String date, String title, String tag, String text, List<SongBean> songs, List<SubGenreBean> subgenre, String maingenre) {
-		this.date = date;
+	public PlayListBean(int playlistid, String userid, String date, String title, List<SongBean> songs, String subgenre, String maingenre) {
 		this.playlistid = playlistid;
-		this.songs = songs;
-		this.subgenre = subgenre;
-		this.tag = tag;
-		this.text = text;
-		this.title = title;
 		this.userid = userid;
+		this.date = date;
+		this.title = title;
+		this.songs = songs;
 		this.maingenre = maingenre;
-		
+		this.subgenre = subgenre;
 	}
 
 	public String getMaingenre() {
@@ -70,22 +65,6 @@ public class PlayListBean {
 		this.title = title;
 	}
 
-	public String getTag() {
-		return tag;
-	}
-
-	public void setTag(String tag) {
-		this.tag = tag;
-	}
-
-	public String getText() {
-		return text;
-	}
-
-	public void setText(String text) {
-		this.text = text;
-	}
-
 	public List<SongBean> getSongs() {
 		return songs;
 	}
@@ -94,11 +73,11 @@ public class PlayListBean {
 		this.songs = songs;
 	}
 
-	public List<SubGenreBean> getSubgenre() {
+	public String getSubgenre() {
 		return subgenre;
 	}
 
-	public void setSubgenre(List<SubGenreBean> subgenre) {
+	public void setSubgenre(String subgenre) {
 		this.subgenre = subgenre;
 	}
 

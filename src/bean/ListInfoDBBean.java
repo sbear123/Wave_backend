@@ -20,26 +20,26 @@ public class ListInfoDBBean extends CommonDBBean {
 		public ArrayList<PlayListBean> getList(){
 			
 			List<SongBean> songs = new ArrayList<>();
-			SongBean song1 = new SongBean(1, "타이틀1", 1, 1, 1, 1, "노래이름1", "가사1", "노래주소1", "여자1", 19, "작곡가1");
-			SongBean song2 = new SongBean(2, "타이틀2", 2, 2, 2, 2, "노래이름2", "가사2", "노래주소2", "여자2", 20, "작곡가2");
-			SongBean song3 = new SongBean(3, "타이틀3", 3, 3, 3, 3, "노래이름3", "가사3", "노래주소3", "여자3", 21, "작곡가3");
+			SongBean song1 = new SongBean(1, "���씠��1", 1, 1, 1, 1, "�끂�옒�씠由�1", "媛��궗1", "�끂�옒二쇱냼1", "�뿬�옄1", 19, "�옉怨↔�1");
+			SongBean song2 = new SongBean(2, "���씠��2", 2, 2, 2, 2, "�끂�옒�씠由�2", "媛��궗2", "�끂�옒二쇱냼2", "�뿬�옄2", 20, "�옉怨↔�2");
+			SongBean song3 = new SongBean(3, "���씠��3", 3, 3, 3, 3, "�끂�옒�씠由�3", "媛��궗3", "�끂�옒二쇱냼3", "�뿬�옄3", 21, "�옉怨↔�3");
 			
 			songs.add(song1);
 			songs.add(song2);
 			songs.add(song3);
 			
-			MainGenreBean MainGenre = new MainGenreBean(1, "장르1");
+			MainGenreBean MainGenre = new MainGenreBean(1, "�옣瑜�1");
 			
 			List<SubGenreBean> SubGenres = new ArrayList<>();
-			SubGenreBean sub1 = new SubGenreBean(1, "서브장르1", 1);
-			SubGenreBean sub2 = new SubGenreBean(2, "서브장르2", 2);
+			SubGenreBean sub1 = new SubGenreBean(1, "�꽌釉뚯옣瑜�1", 1);
+			SubGenreBean sub2 = new SubGenreBean(2, "�꽌釉뚯옣瑜�2", 2);
 			
 			SubGenres.add(sub1);
 			SubGenres.add(sub2);
 			
 			ArrayList<PlayListBean> list = new ArrayList<>();
 			
-			PlayListBean list1 = new PlayListBean(1, "user", "2020.09.01", "타이틀1", "pop", "hi", songs, SubGenres, MainGenre.getName());
+			PlayListBean list1 = new PlayListBean(1, "user", "2020.09.01", "���씠��1", songs, MainGenre.getName(), "신나는");
 			
 			list.add(list1);
 				
