@@ -3,24 +3,22 @@ package bean;
 import java.util.List;
 
 public class RecommandPlayListBean {
-	private List<PlayListBean> lists;
+	private List<PlayListBean> list;
 	private String genreName;
-	private String jacket;
 	
 	public RecommandPlayListBean() {}
 	
 	public RecommandPlayListBean(List<PlayListBean> lists) {
-		this.lists = lists;
+		this.list = lists;
 		this.genreName = lists.get(1).getMaingenre();
-		this.jacket = lists.get(1).getSongs().get(0).getJacket();
 	}
 
-	public List<PlayListBean> getLists() {
-		return lists;
+	public List<PlayListBean> getList() {
+		return list;
 	}
 
-	public void setLists(List<PlayListBean> lists) {
-		this.lists = lists;
+	public void setList(List<PlayListBean> lists) {
+		this.list = lists;
 	}
 
 	public String getGenreName() {
@@ -30,13 +28,4 @@ public class RecommandPlayListBean {
 	public void setGenreName(String genreName) {
 		this.genreName = genreName;
 	}
-
-	public String getJacket() {
-		return jacket;
-	}
-
-	public void setJacket(String jacket) {
-		this.jacket = jacket;
-	}
-	
 }

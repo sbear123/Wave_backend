@@ -8,6 +8,7 @@ public class PlayListBean {
 	private String userid;
 	private String date;
 	private String title;
+	private String jacket;
 	
 	private List<SongBean> songs;
 	private String maingenre;
@@ -20,6 +21,7 @@ public class PlayListBean {
 		this.userid = userid;
 		this.date = date;
 		this.title = title;
+		this.jacket = songs.get(0).getJacket();
 		this.songs = songs;
 		this.maingenre = maingenre;
 		this.subgenre = subgenre;
@@ -81,5 +83,12 @@ public class PlayListBean {
 		this.subgenre = subgenre;
 	}
 
+	public String getJacket() {
+		return jacket;
+	}
+
+	public void setJacket(String jacket) {
+		this.jacket = jacket;
+	}
 	
 }
