@@ -15,19 +15,17 @@ public class UserBean {
 		this.password = password;
 	}
 	
-	public UserBean(String userId, String password, String name, String favorite) {
+	public UserBean(String userId, String password, String name) {
 		this.userId = userId;
 		this.password = password;
 		this.name = name;
-		this.favorite = favorite;
 		this.email = null;
 	}
 	
-	public UserBean(String userId, String password, String name, String favorite, String email) {
+	public UserBean(String userId, String password, String name, String email) {
 		this.userId = userId;
 		this.password = password;
 		this.name = name;
-		this.favorite = favorite;
 		this.email = email;
 	}
 
