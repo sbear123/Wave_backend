@@ -2,7 +2,7 @@ package bean;
 
 public class UserBean {
 	
-	private String userid;
+	private String userId;
 	private String password;
 	private String name;
 	private String favorite;
@@ -11,31 +11,32 @@ public class UserBean {
 	public UserBean() {}
 	
 	public UserBean(String userid, String password) {
-		this.userid = userid;
+		this.userId = userid;
 		this.password = password;
 	}
 	
-	public UserBean(String userid, String password, String name, String favorite) {
-		this.userid = userid;
+	public UserBean(String userId, String password, String name, String favorite) {
+		this.userId = userId;
 		this.password = password;
 		this.name = name;
 		this.favorite = favorite;
+		this.email = null;
 	}
 	
-	public UserBean(String userid, String password, String name, String favorite, String email) {
-		this.userid = userid;
+	public UserBean(String userId, String password, String name, String favorite, String email) {
+		this.userId = userId;
 		this.password = password;
 		this.name = name;
 		this.favorite = favorite;
 		this.email = email;
 	}
 
-	public String getUserid() {
-		return userid;
+	public String getUserId() {
+		return userId;
 	}
 
-	public void setUserid(String userid) {
-		this.userid = userid;
+	public void setUserId(String userid) {
+		this.userId = userid;
 	}
 
 	public String getPassword() {

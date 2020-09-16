@@ -19,7 +19,7 @@ public class SongsDBBean extends CommonDBBean {
 		public ArrayList<SongBean> getSong(){
 			ArrayList<SongBean> list = new ArrayList<>();
 
-			SongBean song1 = new SongBean(1, "타이틀", 1, 1, 1, 1, "노래이름", "가사", "노래주소", "여자", 19, "작곡가");
+			SongBean song1 = new SongBean(1, "�뷡", 1, 1, 1, 1, "�뷡", "�뷡", "�뷡", "�뷡", 19, "�뷡");
 				
 			list.add(song1);
 			

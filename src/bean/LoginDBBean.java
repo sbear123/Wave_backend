@@ -27,7 +27,7 @@ public class LoginDBBean extends CommonDBBean{
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {
 				user = new UserBean();
-				user.setUserid(rs.getString("userid"));
+				user.setUserId(rs.getString("userid"));
 				user.setPassword(rs.getString("password"));
 			}
 			rs.close();

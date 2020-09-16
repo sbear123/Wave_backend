@@ -130,41 +130,31 @@ public class SongBean {
 		return songurl;
 	}
 
-
 	public void setSongurl(String songurl) {
 		this.songurl = songurl;
 	}
-
 
 	public String getGender() {
 		return gender;
 	}
 
-
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-
 
 	public int getAge() {
 		return age;
 	}
 
-
 	public void setAge(int age) {
 		this.age = age;
 	}
-
 
 	public String getWriter() {
 		return writer;
 	}
 
-
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
-
-	
-	
 }
