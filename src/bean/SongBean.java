@@ -5,6 +5,7 @@ public class SongBean {
 	private int songid;
 	private String title;
 	private int artistid;
+	private String artistname;
 	private int maingenreid;
 	private int subgenreid;
 	private int albumid;
@@ -14,34 +15,53 @@ public class SongBean {
 	private String gender;
 	private int age;
 	private String writer;
-	
+	private String jacket;
 	
 	public SongBean(){}
 	
-	public SongBean(int songid, String title, int artistid, int maingenreid, int subgenreid, int albumid, String songname, String lyric, String songurl, String writer) {
-		this.albumid = albumid;
+	public SongBean(int songid, String title, int artistid, int maingenreid, int subgenreid, int albumid, String songname, String songurl, String writer) {
+		this.songid = songid;
+		this.title = title;
 		this.artistid = artistid;
 		this.maingenreid = maingenreid;
-		this.songid = songid;
-		this.songname = songname;
-		this.songurl = songurl;
 		this.subgenreid = subgenreid;
+		this.albumid = albumid;
+		this.songname = songname;
+		this.lyric = null;
+		this.songurl = songurl;
+		this.gender = null;
+		this.age = 0;
+		this.writer = writer;
+		this.jacket = null;
+	}
+	
+	public SongBean(int songid, String title, int artistid, int maingenreid, int subgenreid, int albumid, String songname, String lyric, String songurl, String writer) {
+		this.songid = songid;
 		this.title = title;
+		this.artistid = artistid;
+		this.maingenreid = maingenreid;
+		this.subgenreid = subgenreid;
+		this.albumid = albumid;
+		this.songname = songname;
+		this.lyric = lyric;
+		this.songurl = songurl;
+		this.gender = null;
+		this.age = (Integer) null;
 		this.writer = writer;
 	}
 	
 	public SongBean(int songid, String title, int artistid, int maingenreid, int subgenreid, int albumid, String songname, String lyric, String songurl, String gender, int age, String writer) {
-		this.age = age;
-		this.albumid = albumid;
-		this.artistid = artistid;
-		this.gender = gender;
-		this.lyric = lyric;
-		this.maingenreid = maingenreid;
 		this.songid = songid;
-		this.songname = songname;
-		this.songurl = songurl;
-		this.subgenreid = subgenreid;
 		this.title = title;
+		this.artistid = artistid;
+		this.maingenreid = maingenreid;
+		this.subgenreid = subgenreid;
+		this.albumid = albumid;
+		this.songname = songname;
+		this.lyric = lyric;
+		this.songurl = songurl;
+		this.gender = gender;
+		this.age = age;
 		this.writer = writer;
 	}
 
@@ -157,4 +177,21 @@ public class SongBean {
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
+
+	public String getJacket() {
+		return jacket;
+	}
+
+	public void setJacket(String jacket) {
+		this.jacket = jacket;
+	}
+
+	public String getArtistname() {
+		return artistname;
+	}
+
+	public void setArtistname(String artistname) {
+		this.artistname = artistname;
+	}
+	
 }
