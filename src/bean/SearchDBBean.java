@@ -21,16 +21,16 @@ public class SearchDBBean extends CommonDBBean{
 		AlbumBean album = null;
 		ArtistBean artist = null;
 		SongBean song = null;
-		ArrayList<SongBean> songs = null;
-		ArrayList<AlbumBean> albums = null;
-		ArrayList<ArtistBean> artists = null;
+		ArrayList<SongBean> songs = new ArrayList<>();
+		ArrayList<AlbumBean> albums = new ArrayList<>();
+		ArrayList<ArtistBean> artists = new ArrayList<>();
 		Connection conn = getConnection();
 		if (conn == null)
 			return null;
 		System.out.println("conn");
 		
-		String albumsql = "select * from album where title LIKE ?";
-		String artistsql = "select * from artist where title LIKE ?";
+		String albumsql = "select * from album where name LIKE ?";
+		String artistsql = "select * from artist where name LIKE ?";
 		String songsql = "select * from song where title LIKE ?";
 		
 		try {

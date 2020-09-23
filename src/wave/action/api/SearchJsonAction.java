@@ -8,9 +8,8 @@ import org.apache.commons.io.IOUtils;
 import com.google.gson.Gson;
 
 import bean.SearchDBBean;
-import bean.ResultBean;
+import bean.KeywordBean;
 import bean.SearchBean;
-import bean.UserBean;
 import wave.action.Action;
 
 public class SearchJsonAction implements Action {
@@ -23,9 +22,9 @@ public class SearchJsonAction implements Action {
 		
 		// input
 		String str = IOUtils.toString(request.getReader());
-		String requestKeyword = gson.toJson(str); 
+		KeywordBean requestKeyword = gson.fromJson(str, KeywordBean.class);
 		
-		result = SearchDBBean.getInstance().search(requestKeyword);
+		result = SearchDBBean.getInstance().search(requestKeyword.getKeyword());
 		
 		return gson.toJson(result, SearchBean.class);
 	}
