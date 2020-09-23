@@ -40,7 +40,7 @@ public class SearchDBBean extends CommonDBBean{
 			while (rs.next()) {
 				album = new AlbumBean();
 				album.setAlbumid(rs.getInt("albumid"));
-				album.setAlbumname(rs.getString("albumname"));
+				album.setAlbumname(rs.getString("name"));
 				album.setAritstid(rs.getInt("artistid"));
 				album.setJacket(rs.getString("jacket"));
 				album.setArtistname(artistname(rs.getInt("artistid")));
@@ -52,7 +52,7 @@ public class SearchDBBean extends CommonDBBean{
 			while (rs.next()) {
 				artist = new ArtistBean();
 				artist.setAritstid(rs.getInt("artistid"));
-				artist.setArtistname(rs.getString("artistname"));
+				artist.setArtistname(rs.getString("name"));
 				artists.add(artist);
 			}
 			pstmt = conn.prepareStatement(songsql);
