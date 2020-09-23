@@ -21,7 +21,7 @@ public class CreateListDBBean extends CommonDBBean{
 		int Maingenreid = 0;
 		int Subgenreid = 0;
 		
-		String sql = "select maingenreid from maingenre where name=?";
+		String sql = "select maingenreid from maingenre where name=(?)";
 	
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -40,7 +40,7 @@ public class CreateListDBBean extends CommonDBBean{
 			e.printStackTrace();
 		}
 		
-		sql = "select subgenreid from subgenre where name=? And maingenreid =?";
+		sql = "select subgenreid from subgenre where name=(?) And maingenreid =(?)";
 		
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);

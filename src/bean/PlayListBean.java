@@ -33,10 +33,6 @@ public class PlayListBean {
 		this.maingenre = maingenre;
 		this.subgenre = subgenre;
 	}
-	
-	public PlayListBean(int playlistid) {
-		this.playlistid = playlistid;
-	}
 
 	public String getMaingenre() {
 		return maingenre;

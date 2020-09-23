@@ -76,11 +76,8 @@ public class ListDBBean extends CommonDBBean {
 		playlist3.add(p4);
 		
 		RecommandPlayListBean rpb1 = new RecommandPlayListBean(playlist1);
-		
 		RecommandPlayListBean rpb2 = new RecommandPlayListBean(playlist2);
-		
 		RecommandPlayListBean rpb3 = new RecommandPlayListBean(playlist3);
-		
 		
 		list.add(rpb1);
 		list.add(rpb2);

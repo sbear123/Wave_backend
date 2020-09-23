@@ -7,26 +7,28 @@ import org.apache.commons.io.IOUtils;
 
 import com.google.gson.Gson;
 
-import bean.SearchDBBean;
-import bean.KeywordBean;
-import bean.SearchBean;
+import bean.CreateListDBBean;
+import bean.PlayListBean;
+import bean.ResultBean;
 import wave.action.Action;
 
-public class SearchJsonAction implements Action {
+public class CreatePlaylistJsonAction implements Action{
 
 	@Override
 	public String requestProcess(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		request.setCharacterEncoding("UTF-8");
 		Gson gson = new Gson();
-		SearchBean result = new SearchBean();
+		ResultBean result = new ResultBean();
 		
 		// input
 		String str = IOUtils.toString(request.getReader());
-		KeywordBean requestKeyword = gson.fromJson(str, KeywordBean.class);
+		PlayListBean requestList = gson.fromJson(str, PlayListBean.class); 
 		
-		result = SearchDBBean.getInstance().search(requestKeyword.getKeyword());
+		System.out.println(requestList.getTitle() + requestList.getUserid());
+		int count = CreateListDBBean.getInstance().CreateList(requestList);
+		if(count==1)
+			result.result="ok";
 		
-		return gson.toJson(result, SearchBean.class);
+		return gson.toJson(result, ResultBean.class);
 	}
-
 }
