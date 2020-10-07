@@ -1,12 +1,14 @@
 package bean;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
+import java.sql.SQLException;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.sql.DataSource;
+import bean.getname.AlbumDBBean;
+import bean.getname.ArtistDBBean;
+import bean.getname.MaingenreDBBean;
+import bean.getname.SubgenreDBBean;
 
 public class SongsDBBean extends CommonDBBean {
 	//Singleton
@@ -16,13 +18,49 @@ public class SongsDBBean extends CommonDBBean {
 			return instance;
 		}
 		
-		public ArrayList<SongBean> getSong(){
-			ArrayList<SongBean> list = new ArrayList<>();
-
-			SongBean song1 = new SongBean(1, "노래", 1, 1, 1, 1, "노래", "노래", "노래", "노래", 19, "노래");
-				
-			list.add(song1);
+		public SongBean getSong(SongBean input){
+			SongBean song = null;
+			Connection conn = getConnection();
+			if(conn == null) return null;
+			System.out.println("conn");
 			
-			return list;
+			String sql = "select * from song where songid=?";
+			try {
+				PreparedStatement pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, input.getSongid());
+				ResultSet rs = pstmt.executeQuery();
+				if(rs.next()) {
+					song = new SongBean();
+					song.setTitle(rs.getString("title"));
+					song.setArtistid(rs.getInt("artistid"));
+					song.setMaingenreid(rs.getInt("maingenreid"));
+					song.setSubgenreid(rs.getInt("subgenreid"));
+					song.setAlbumid(rs.getInt("albumid"));
+					song.setLyric(rs.getString("lyric"));
+					song.setSongurl(rs.getString("songurl"));
+					song.setWriter(rs.getString("songurl"));
+					song.setAge(rs.getInt("age"));
+					song.setGender(rs.getString("gender"));
+					ArtistDBBean name = new ArtistDBBean();
+					song.setArtistname(name.getArtist(song.getArtistid()));
+					MaingenreDBBean name2 = new MaingenreDBBean();
+					song.setMaingenrename(name2.getMaingenre(song.getMaingenreid()));
+					SubgenreDBBean name3 = new SubgenreDBBean();
+					song.setSubgenrename(name3.getSubgenre(song.getSubgenreid()));
+					AlbumDBBean name4 = new AlbumDBBean();
+					SongBean album = name4.getAlbum(song.getAlbumid());
+					song.setAlbumname(album.getAlbumname());
+					song.setJacket(album.getJacket());
+				}
+				rs.close();
+				pstmt.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+			closeConnection(conn);
+			return song;
 		}
 }

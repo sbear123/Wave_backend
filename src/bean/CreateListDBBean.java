@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class CreateListDBBean extends CommonDBBean{
 
@@ -60,13 +62,18 @@ public class CreateListDBBean extends CommonDBBean{
 			e.printStackTrace();
 		}
 		
-		sql = "insert into playlist(userid, title, maingenreid, subgenreid) values (?,?,?,?)";
+		sql = "insert into playlist(userid, title, maingenreid, subgenreid, date) values (?,?,?,?,?)";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, list.getUserid());
 			pstmt.setString(2, list.getTitle());
 			pstmt.setInt(3, Maingenreid);
 			pstmt.setInt(4, Subgenreid);
+			
+			SimpleDateFormat format1 = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss");
+			Date time = new Date();
+			String time1 = format1.format(time);
+			pstmt.setString(5, time1);
 			
 			result = pstmt.executeUpdate();
 			if(pstmt!=null) pstmt.close();
