@@ -28,7 +28,7 @@ public class ListInfoDBBean extends CommonDBBean {
 			songs.add(song2);
 			songs.add(song3);
 			
-			MainGenreBean MainGenre = new MainGenreBean(1, "�옣瑜�1");
+			MainGenreBean MainGenre = new MainGenreBean(1, "게");
 			
 			List<SubGenreBean> SubGenres = new ArrayList<>();
 			SubGenreBean sub1 = new SubGenreBean(1, "눈누", 1);
