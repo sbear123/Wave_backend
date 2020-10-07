@@ -21,7 +21,7 @@ public class SongsJsonAction implements Action {
 		String str = IOUtils.toString(request.getReader());
 		SongBean input = gson.fromJson(str, SongBean.class);
 		
-		SongBean song = SongsDBBean.getInstance().getSong(input);
+		SongBean song = SongsDBBean.getInstance().getSong(input.getSongid());
 		
 		return gson.toJson(song, SongBean.class);
 	}

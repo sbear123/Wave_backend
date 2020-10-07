@@ -1,13 +1,13 @@
 package bean;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.sql.DataSource;
+import bean.getname.PlaylistDBBean;
 
 public class ListInfoDBBean extends CommonDBBean {
 	//Singleton
@@ -17,33 +17,50 @@ public class ListInfoDBBean extends CommonDBBean {
 			return instance;
 		}
 		
-		public ArrayList<PlayListBean> getList(){
+		public PlayListBean getList(int listid){
+			PlayListBean list = null;
+			List<SongBean> songlist = new ArrayList<>();
+			SongBean song = null;
+			boolean check = false;
+			Connection conn = getConnection();
+			if(conn == null) return null;
+			System.out.println("conn");
 			
-			List<SongBean> songs = new ArrayList<>();
-			SongBean song1 = new SongBean(1, "가", 1, 1, 1, 1, "용재", "라", "사", "용재랑", 19, "담보볼사람");
-			SongBean song2 = new SongBean(2, "나", 2, 2, 2, 2, "이나은", "마", "아", "용재는", 20, "공포영화가 시러");
-			SongBean song3 = new SongBean(3, "다", 3, 3, 3, 3, "개이쁘다", "바", "자", "마 닥치", 21, "욕은 안할게");
+			String sql = "select * from playlistsong where playlistid=?";
+			try {
+				PreparedStatement pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, listid);
+				ResultSet rs = pstmt.executeQuery();
+				while(rs.next()) {
+					song = SongsDBBean.getInstance().getSong(rs.getInt("songid"));
+					songlist.add(song);
+					if(!check) {
+						list = new PlayListBean();
+						list.setJacket(song.getJacket());
+					}
+					check = true;
+				}
+				rs.close();
+				pstmt.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			if(check) {
+				list = new PlayListBean();
+				list.setPlaylistid(listid);
+				PlaylistDBBean getelse = new PlaylistDBBean();
+				PlayListBean samplelist = getelse.getlist(listid);
+				list.setDate(samplelist.getDate());
+				list.setMaingenre(samplelist.getMaingenre());
+				list.setSongs(songlist);
+				list.setSubgenre(samplelist.getSubgenre());
+				list.setTitle(samplelist.getTitle());
+				list.setUserid(samplelist.getUserid());
+			}
 			
-			songs.add(song1);
-			songs.add(song2);
-			songs.add(song3);
 			
-			MainGenreBean MainGenre = new MainGenreBean(1, "�옣瑜�1");
-			
-			List<SubGenreBean> SubGenres = new ArrayList<>();
-			SubGenreBean sub1 = new SubGenreBean(1, "눈누", 1);
-			SubGenreBean sub2 = new SubGenreBean(2, "난나", 2);
-			
-			SubGenres.add(sub1);
-			SubGenres.add(sub2);
-			
-			ArrayList<PlayListBean> list = new ArrayList<>();
-			
-			PlayListBean list1 = new PlayListBean(1, "user", "2020.09.01", "홀리마리오루이지데이지", songs, MainGenre.getName(), "신나는");
-			
-			list.add(list1);
-				
-			
+			closeConnection(conn);
 			return list;
 		}
 }

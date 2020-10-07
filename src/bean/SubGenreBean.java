@@ -1,46 +1,29 @@
 package bean;
 
-import java.util.List;
-
 public class SubGenreBean {
 	
-	private int subgenreid;
-	private String name;
-	private int maingenreid;
+	private int subGenreId;
+	private int index;
+	private String subGenreName;
 	
-	public SubGenreBean() {}
-	
-	public SubGenreBean(int subgenreid, String name, int maingenreid) {
-		this.subgenreid = subgenreid;
-		this.name = name;
-		this.maingenreid = maingenreid;
+	public int getSubGenreId() {
+		return subGenreId;
 	}
-
-	public int getSubgenreid() {
-		return subgenreid;
+	public void setSubGenreId(int subGenreId) {
+		this.subGenreId = subGenreId;
 	}
-
-	public void setSubgenreid(int subgenreid) {
-		this.subgenreid = subgenreid;
+	public int getIndex() {
+		return index;
 	}
-
-	public String getName() {
-		return name;
+	public void setIndex(int index) {
+		this.index = index;
 	}
-
-	public void setName(String name) {
-		this.name = name;
+	public String getSubGenreName() {
+		return subGenreName;
 	}
-
-	public int getMaingenreid() {
-		return maingenreid;
+	public void setSubGenreName(String subGenreName) {
+		this.subGenreName = subGenreName;
 	}
-
-	public void setMaingenreid(int maingenreid) {
-		this.maingenreid = maingenreid;
-	}
-	
-	
 	
 	
 }

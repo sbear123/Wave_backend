@@ -10,7 +10,7 @@ public class PlayListBean {
 	private String title;
 	private String jacket;
 	
-	private List<SongBean> songs;
+	private List<SongBean> song;
 	private String maingenre;
 	private String subgenre;
 	
@@ -22,7 +22,7 @@ public class PlayListBean {
 		this.date = date;
 		this.title = title;
 		this.jacket = songs.get(0).getJacket();
-		this.songs = songs;
+		this.song = songs;
 		this.maingenre = maingenre;
 		this.subgenre = subgenre;
 	}
@@ -79,11 +79,11 @@ public class PlayListBean {
 	}
 
 	public List<SongBean> getSongs() {
-		return songs;
+		return song;
 	}
 
 	public void setSongs(List<SongBean> songs) {
-		this.songs = songs;
+		this.song = songs;
 	}
 
 	public String getSubgenre() {

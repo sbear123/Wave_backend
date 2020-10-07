@@ -15,12 +15,12 @@ public class Taste1JsonAction implements Action {
 
 	@Override
 	public String requestProcess(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-		Taste1DBBean db = Taste1DBBean.getInstance();
-		ArrayList<MainGenreBean> list = db.getFeels();
-		
+		request.setCharacterEncoding("UTF-8");
 		Gson gson = new Gson();
-		String result = gson.toJson(list).toString();
-		return result;
+		
+		ArrayList<MainGenreBean> list = Taste1DBBean.getInstance().getGenres();
+
+		return gson.toJson(list);
 	}
 
 }

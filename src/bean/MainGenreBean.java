@@ -2,32 +2,27 @@ package bean;
 
 public class MainGenreBean {
 	
-	private int maingenreid;
-	private String name;
+	private int mainGenreId;
+	private int index;
+	private String mainGenreName;
 	
-	public MainGenreBean () {}
-	
-	public MainGenreBean (int maingenreid, String name) {
-		this.maingenreid = maingenreid;
-		this.name = name;
+	public int getMainGenreId() {
+		return mainGenreId;
 	}
-
-	public int getMaingenreid() {
-		return maingenreid;
+	public void setMainGenreId(int mainGenreId) {
+		this.mainGenreId = mainGenreId;
 	}
-
-	public void setMaingenreid(int maingenreid) {
-		this.maingenreid = maingenreid;
+	public String getMainGenreName() {
+		return mainGenreName;
 	}
-
-	public String getName() {
-		return name;
+	public void setMainGenreName(String mainGenreName) {
+		this.mainGenreName = mainGenreName;
 	}
-
-	public void setName(String name) {
-		this.name = name;
+	public int getIndex() {
+		return index;
 	}
-	
-	
+	public void setIndex(int index) {
+		this.index = index;
+	}
 	
 }

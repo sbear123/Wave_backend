@@ -1,9 +1,9 @@
 package wave.action.api;
 
-import java.util.ArrayList;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.io.IOUtils;
 
 import com.google.gson.Gson;
 
@@ -15,12 +15,17 @@ public class ListInfoJsonAction implements Action {
 
 	@Override
 	public String requestProcess(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-		ListInfoDBBean db = ListInfoDBBean.getInstance();
-		ArrayList<PlayListBean> list = db.getList();
-		
+		request.setCharacterEncoding("UTF-8");
 		Gson gson = new Gson();
-		String result = gson.toJson(list).toString();
-		return result;
+		
+		// input
+		String str = IOUtils.toString(request.getReader());
+		PlayListBean requestList = gson.fromJson(str, PlayListBean.class); 
+		
+		System.out.println(requestList.getPlaylistid());
+		PlayListBean list = ListInfoDBBean.getInstance().getList(requestList.getPlaylistid());
+
+		return gson.toJson(list, PlayListBean.class);
 	}
 
 }

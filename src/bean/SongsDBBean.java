@@ -18,7 +18,7 @@ public class SongsDBBean extends CommonDBBean {
 			return instance;
 		}
 		
-		public SongBean getSong(SongBean input){
+		public SongBean getSong(int songid){
 			SongBean song = null;
 			Connection conn = getConnection();
 			if(conn == null) return null;
@@ -27,7 +27,7 @@ public class SongsDBBean extends CommonDBBean {
 			String sql = "select * from song where songid=?";
 			try {
 				PreparedStatement pstmt = conn.prepareStatement(sql);
-				pstmt.setInt(1, input.getSongid());
+				pstmt.setInt(1, songid);
 				ResultSet rs = pstmt.executeQuery();
 				if(rs.next()) {
 					song = new SongBean();
