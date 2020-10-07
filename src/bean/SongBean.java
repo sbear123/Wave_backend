@@ -7,8 +7,11 @@ public class SongBean {
 	private int artistid;
 	private String artistname;
 	private int maingenreid;
+	private String maingenrename;
+	private String subgenrename;
 	private int subgenreid;
 	private int albumid;
+	private String albumname;
 	private String songname;
 	private String lyric;
 	private String songurl;
@@ -46,7 +49,7 @@ public class SongBean {
 		this.lyric = lyric;
 		this.songurl = songurl;
 		this.gender = null;
-		this.age = (Integer) null;
+		this.age = 0;
 		this.writer = writer;
 	}
 	
@@ -192,6 +195,30 @@ public class SongBean {
 
 	public void setArtistname(String artistname) {
 		this.artistname = artistname;
+	}
+
+	public String getMaingenrename() {
+		return maingenrename;
+	}
+
+	public void setMaingenrename(String maingenrename) {
+		this.maingenrename = maingenrename;
+	}
+
+	public String getSubgenrename() {
+		return subgenrename;
+	}
+
+	public void setSubgenrename(String subgenrename) {
+		this.subgenrename = subgenrename;
+	}
+
+	public String getAlbumname() {
+		return albumname;
+	}
+
+	public void setAlbumname(String albumname) {
+		this.albumname = albumname;
 	}
 	
 }
