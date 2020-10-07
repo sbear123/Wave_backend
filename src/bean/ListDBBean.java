@@ -25,10 +25,10 @@ public class ListDBBean extends CommonDBBean {
 		ArrayList<SongBean> song3 = new ArrayList<>();
 		ArrayList<SongBean> song4 = new ArrayList<>();
 		
-		SongBean s1 = new SongBean(1, "Å¸ÀÌÆ²1", 1, 1, 1, 1, "»ç°ú»óÀÚ", "https://youtu.be/gKvbDkLeSo0", "Saavane");
-		SongBean s2 = new SongBean(2, "Å¸ÀÌÆ²2", 1, 1, 1, 1, "±ø", "https://youtu.be/bK8fVyP-98Q", "Magic Mansion");
-		SongBean s3 = new SongBean(3, "Å¸ÀÌÆ²3", 1, 1, 1, 1, "»ç°ú»óÀÚ", "https://youtu.be/gKvbDkLeSo0", "Saavane");
-		SongBean s4 = new SongBean(4, "Å¸ÀÌÆ²4", 1, 1, 1, 1, "»ç°ú»óÀÚ", "https://youtu.be/gKvbDkLeSo0", "Saavane");
+		SongBean s1 = new SongBean(1, "ì§€ì½”", 1, 1, 1, 1, "she", "https://youtu.be/gKvbDkLeSo0", "Saavane");
+		SongBean s2 = new SongBean(2, "ì´ë‚˜ì€", 1, 1, 1, 1, "he", "https://youtu.be/bK8fVyP-98Q", "Magic Mansion");
+		SongBean s3 = new SongBean(3, "ì œë‹ˆ", 1, 1, 1, 1, "We", "https://youtu.be/gKvbDkLeSo0", "Saavane");
+		SongBean s4 = new SongBean(4, "ì‹¸ì´", 1, 1, 1, 1, "are", "https://youtu.be/gKvbDkLeSo0", "Saavane");
 		
 		s1.setJacket("https://images.genius.com/a8c57c8fe83eb985d31e9e27148f7cf4.600x600x1.jpg");
 		s2.setJacket("https://image.chosun.com/sitedata/image/202005/15/2020051503438_0.jpg");
@@ -55,10 +55,10 @@ public class ListDBBean extends CommonDBBean {
 		song4.add(s3);
 		song4.add(s4);
 		
-		PlayListBean p1 = new PlayListBean(1,"user","2020.06.06","¸®½ºÆ®1", song1, "·¦", "½Å³ª´Â");
-		PlayListBean p2 = new PlayListBean(2,"user","2020.06.06","¸®½ºÆ®2", song2, "·¦", "½Å³ª´Â");
-		PlayListBean p3 = new PlayListBean(3,"user","2020.06.06","¸®½ºÆ®3", song3, "·¦", "½Å³ª´Â");
-		PlayListBean p4 = new PlayListBean(4,"user","2020.06.06","¸®½ºÆ®4", song4, "·¦", "½Å³ª´Â");
+		PlayListBean p1 = new PlayListBean(1,"user","2020.06.06","ë­", song1, "ì†ì•˜ì§€", "ë©”ë¡±");
+		PlayListBean p2 = new PlayListBean(2,"user","2020.06.06","íˆí•˜í˜¸", song2, "í• êº¼ë‹¤", "ë‹¹ê·¼");
+		PlayListBean p3 = new PlayListBean(3,"user","2020.06.06","ë°”ë‹¤ê°€ë§ˆ", song3, "êµ¬ë¼", "ìì „ê±°");
+		PlayListBean p4 = new PlayListBean(4,"user","2020.06.06","ì•ˆí•œë‹¤", song4, "ì§€ë¡±", "ì „ìš©ê¸¸");
 		
 		playlist1.add(p1);
 		playlist1.add(p2);

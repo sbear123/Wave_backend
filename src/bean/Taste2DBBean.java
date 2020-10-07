@@ -19,15 +19,15 @@ public class Taste2DBBean extends CommonDBBean {
 	public ArrayList<SubGenreBean> getFeels(){
 		ArrayList<SubGenreBean> list = new ArrayList<>();
 		
-		SubGenreBean e1 = new SubGenreBean(1, "ÇÑ¿äÇÑ", 1);
-		SubGenreBean e2 = new SubGenreBean(2, "Àß»ı°åÁö·Õ", 1);
-		SubGenreBean e3 = new SubGenreBean(3, "¹üÆÛÄ«", 1);
-		SubGenreBean e4 = new SubGenreBean(4, "¿À¾Æ½Ã½º", 1);
-		SubGenreBean e5 = new SubGenreBean(5, "Àå¹üÁØ", 1);
-		SubGenreBean e6 = new SubGenreBean(6, "È«´ë", 1);
-		SubGenreBean e7 = new SubGenreBean(7, "¿Í", 1);
-		SubGenreBean e8 = new SubGenreBean(8, "°Ç´ë»çÀÌ", 1);
-		SubGenreBean e9 = new SubGenreBean(9, "´«´©³­³ª", 1);
+		SubGenreBean e1 = new SubGenreBean(1, "ê°€", 1);
+		SubGenreBean e2 = new SubGenreBean(2, "ë‚˜", 1);
+		SubGenreBean e3 = new SubGenreBean(3, "ë‹¤", 1);
+		SubGenreBean e4 = new SubGenreBean(4, "ë¼", 1);
+		SubGenreBean e5 = new SubGenreBean(5, "ë§ˆ", 1);
+		SubGenreBean e6 = new SubGenreBean(6, "ë°”", 1);
+		SubGenreBean e7 = new SubGenreBean(7, "ì‚¬", 1);
+		SubGenreBean e8 = new SubGenreBean(8, "ì•„", 1);
+		SubGenreBean e9 = new SubGenreBean(9, "ì", 1);
 		
 		list.add(e1);
 		list.add(e2);
