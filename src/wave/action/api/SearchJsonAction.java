@@ -24,6 +24,7 @@ public class SearchJsonAction implements Action {
 		String str = IOUtils.toString(request.getReader());
 		KeywordBean requestKeyword = gson.fromJson(str, KeywordBean.class);
 		
+		System.out.println(requestKeyword.getKeyword());
 		result = SearchDBBean.getInstance().search(requestKeyword.getKeyword());
 		
 		return gson.toJson(result, SearchBean.class);

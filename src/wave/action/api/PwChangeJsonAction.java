@@ -23,8 +23,9 @@ public class PwChangeJsonAction implements Action {
 		String str = IOUtils.toString(request.getReader());
 		PwBean requestUser = gson.fromJson(str, PwBean.class); 
 		
-		String Check = PwChangeDBBean.getInstance().ChangePw(originPw, newPw)
-		
+		System.out.println(requestUser.getNewPw()+requestUser.getOrginPw()+requestUser.getUserId());
+		String check = PwChangeDBBean.getInstance().ChangePw(requestUser);
+		result.result = check;
 		return gson.toJson(result, ResultBean.class);
 	}
 }
