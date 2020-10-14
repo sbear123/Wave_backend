@@ -24,7 +24,7 @@ public class ListJsonAction implements Action {
 		
 		request.setCharacterEncoding("UTF-8");
 		Gson gson = new Gson();
-		RecommandPlayListBean result = new RecommandPlayListBean();
+		ArrayList<RecommandPlayListBean> result = new ArrayList<>();
 		
 		// input
 		String str = IOUtils.toString(request.getReader());

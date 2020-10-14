@@ -20,7 +20,7 @@ public class ListDBBean extends CommonDBBean {
 		return instance;
 	}
 
-	public RecommandPlayListBean show(String userid) {
+	public ArrayList<RecommandPlayListBean> show(String userid) {
 		RecommandPlayListBean result = new RecommandPlayListBean();
 		
 		int Maingenre=0;
