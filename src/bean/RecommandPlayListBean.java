@@ -6,7 +6,10 @@ public class RecommandPlayListBean {
 	private List<PlayListBean> list;
 	private String genreName;
 	
-	public RecommandPlayListBean() {}
+	public RecommandPlayListBean() {
+		this.list = null;
+		this.genreName = null;
+	}
 	
 	public RecommandPlayListBean(List<PlayListBean> list) {
 		this.list = list;

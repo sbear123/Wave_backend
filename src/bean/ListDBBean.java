@@ -1,7 +1,9 @@
 package bean;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.naming.Context;
@@ -11,78 +13,152 @@ import javax.sql.DataSource;
 public class ListDBBean extends CommonDBBean {
 	//Singleton
 	private static ListDBBean instance = new ListDBBean();
+	
 	private ListDBBean() {}
+	
 	public static ListDBBean getInstance() {
 		return instance;
 	}
-	public ArrayList<RecommandPlayListBean> getRecommandedList() {
-		ArrayList<RecommandPlayListBean> list = new ArrayList<>();
-		ArrayList<PlayListBean> playlist1 = new ArrayList<>();
-		ArrayList<PlayListBean> playlist2 = new ArrayList<>();
-		ArrayList<PlayListBean> playlist3 = new ArrayList<>();
-		ArrayList<SongBean> song1 = new ArrayList<>();
-		ArrayList<SongBean> song2 = new ArrayList<>();
-		ArrayList<SongBean> song3 = new ArrayList<>();
-		ArrayList<SongBean> song4 = new ArrayList<>();
+
+	public RecommandPlayListBean show(String userid) {
+		RecommandPlayListBean result = new RecommandPlayListBean();
 		
-		SongBean s1 = new SongBean(1, "지코", 1, 1, 1, 1, "she", "https://youtu.be/gKvbDkLeSo0", "Saavane");
-		SongBean s2 = new SongBean(2, "이나은", 1, 1, 1, 1, "he", "https://youtu.be/bK8fVyP-98Q", "Magic Mansion");
-		SongBean s3 = new SongBean(3, "제니", 1, 1, 1, 1, "We", "https://youtu.be/gKvbDkLeSo0", "Saavane");
-		SongBean s4 = new SongBean(4, "싸이", 1, 1, 1, 1, "are", "https://youtu.be/gKvbDkLeSo0", "Saavane");
+		int Maingenre=0;
+		int Subgenre1=0;
+		int Subgenre2=0;
 		
-		s1.setJacket("https://images.genius.com/a8c57c8fe83eb985d31e9e27148f7cf4.600x600x1.jpg");
-		s2.setJacket("https://image.chosun.com/sitedata/image/202005/15/2020051503438_0.jpg");
-		s1.setJacket("https://images.genius.com/a8c57c8fe83eb985d31e9e27148f7cf4.600x600x1.jpg");
-		s1.setJacket("https://images.genius.com/a8c57c8fe83eb985d31e9e27148f7cf4.600x600x1.jpg");
+		PlayListBean list = null;
+		ArrayList<PlayListBean> lists = new ArrayList<>();
 		
-		song1.add(s1);
-		song1.add(s2);
-		song1.add(s3);
-		song1.add(s4);
+		Connection conn = getConnection();
+		if(conn==null) return null;
 		
-		song2.add(s1);
-		song2.add(s2);
-		song2.add(s3);
-		song2.add(s4);
+		String sql = "Select * from userfavorites where userid = ?";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userid);
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) {
+				
+				Maingenre = rs.getInt("maingenre");
+				Subgenre1 = rs.getInt("Subgenre1");
+				Subgenre2 = rs.getInt("Subgenre2");
+			}
+			rs.close();
+			pstmt.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
-		song3.add(s1);
-		song3.add(s2);
-		song3.add(s3);
-		song3.add(s4);
+		ArrayList<String> jacketlist = new ArrayList<>();
+		for(int i = 1; i<=3; i++) {
+			jacketlist = getJacketUrl(Maingenre, Subgenre1, Subgenre2, i);
+		}
 		
-		song4.add(s1);
-		song4.add(s2);
-		song4.add(s3);
-		song4.add(s4);
+		for(String i : jacketlist) { //for문을 통한 전체출력
+		    System.out.println(i);
+		}
 		
-		PlayListBean p1 = new PlayListBean(1,"user","2020.06.06","뭐", song1, "속았지", "메롱");
-		PlayListBean p2 = new PlayListBean(2,"user","2020.06.06","히하호", song2, "할꺼다", "당근");
-		PlayListBean p3 = new PlayListBean(3,"user","2020.06.06","바다가마", song3, "구라", "자전거");
-		PlayListBean p4 = new PlayListBean(4,"user","2020.06.06","안한다", song4, "지롱", "전용길");
 		
-		playlist1.add(p1);
-		playlist1.add(p2);
-		playlist1.add(p3);
-		playlist1.add(p4);
+		return null;
+	}
+	
+	
+	
+	private ArrayList<String> getJacketUrl(int maingenre, int subgenre1, int subgenre2, int num) {
+		Connection conn = getConnection();
+		if (conn == null)
+			return null;
+		System.out.println("conn");
 		
-		playlist2.add(p1);
-		playlist2.add(p2);
-		playlist2.add(p3);
-		playlist2.add(p4);
+		String genre = null;
+		int choose = 0;
+		int count = 0;
+		ArrayList<String> jacketlist = new ArrayList<>();
 		
-		playlist3.add(p1);
-		playlist3.add(p2);
-		playlist3.add(p3);
-		playlist3.add(p4);
+		switch(num) {
+		case 1:
+			genre = "maingenreid";
+			choose = maingenre;
+			break;
+		case 2:
+			genre = "subgenreid";
+			choose = subgenre1;
+			break;
+		case 3:
+			genre = "subgenreid";
+			choose = subgenre2;
+			break;
+		}
 		
-		RecommandPlayListBean rpb1 = new RecommandPlayListBean(playlist1);
-		RecommandPlayListBean rpb2 = new RecommandPlayListBean(playlist2);
-		RecommandPlayListBean rpb3 = new RecommandPlayListBean(playlist3);
+		String playlistsql = "select playlistid from playlist where" + genre +"= ?";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(playlistsql);
+			pstmt.setInt(1, choose);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next() && count<3) {
+				count++;
+				ArrayList<Integer> playlist = new ArrayList<>();
+				playlist.add(rs.getInt("playlistid"));
+				
+				String songsql = "select songid from playlistsong where playlistid = ?";
+				try {
+					PreparedStatement pstmt1 = conn.prepareStatement(songsql);
+					for(Integer i : playlist) { //for문을 통한 전체출력
+						pstmt1.setInt(1, i);
+						ResultSet rs1 = pstmt1.executeQuery();
+						if(rs1.next()) {
+							//ArrayList<Integer> songlist = new ArrayList<>();
+							//songlist.add(rs.getInt("songid"));
+							int songid = (rs1.getInt("songid"));
+							
+							String albumsql = "select albumid from song where songid = ?";
+							try {
+								PreparedStatement pstmt2 = conn.prepareStatement(albumsql);
+									pstmt2.setInt(1, songid);
+									ResultSet rs2 = pstmt2.executeQuery();
+									if(rs2.next()) {
+										int albumid = rs2.getInt("albumid");
+										
+										String jacketsql = "select jacket from album where albumid = ?";
+										try {
+											PreparedStatement pstmt3 = conn.prepareStatement(jacketsql);
+											pstmt3.setInt(1, albumid);
+											ResultSet rs3 = pstmt3.executeQuery();
+											if(rs3.next()) {
+											jacketlist.add(rs3.getString("jacket"));
+											}
+											
+											rs3.close();
+											pstmt3.close();
+											
+										}catch (SQLException e) {
+											e.printStackTrace();
+										}
+										
+									}
+									rs2.close();
+									pstmt2.close();
+									
+								}catch(SQLException e) {
+								e.printStackTrace();
+							}
+						}
+					}
+					//rs1.close();
+					pstmt1.close();
+				}catch(SQLException e) {
+					e.printStackTrace();
+				}
+			
+			}
+			rs.close();
+			pstmt.close();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
 		
-		list.add(rpb1);
-		list.add(rpb2);
-		list.add(rpb3);
-		
-		return list;
+		return jacketlist;
 	}
 }

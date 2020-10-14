@@ -5,10 +5,16 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.io.IOUtils;
+
 import com.google.gson.Gson;
 
+import bean.KeywordBean;
 import bean.ListDBBean;
+import bean.PlayListBean;
 import bean.RecommandPlayListBean;
+import bean.SearchBean;
+import bean.SearchDBBean;
 import wave.action.Action;
 
 public class ListJsonAction implements Action {
@@ -16,14 +22,17 @@ public class ListJsonAction implements Action {
 	@Override
 	public String requestProcess(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		
-		ListDBBean db = ListDBBean.getInstance();
-		ArrayList<RecommandPlayListBean> list = db.getRecommandedList();
-		
+		request.setCharacterEncoding("UTF-8");
 		Gson gson = new Gson();
-		String result = gson.toJson(list).toString();
-		System.out.println(result);
+		RecommandPlayListBean result = new RecommandPlayListBean();
 		
-		return result;
+		// input
+		String str = IOUtils.toString(request.getReader());
+		PlayListBean req = gson.fromJson(str, PlayListBean.class);
+		
+		result = ListDBBean.getInstance().show(req.getUserid());
+		
+		return gson.toJson(result, PlayListBean.class);
 	}
 
 }

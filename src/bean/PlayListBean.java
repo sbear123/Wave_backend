@@ -27,9 +27,10 @@ public class PlayListBean {
 		this.subgenre = subgenre;
 	}
 	
-	public PlayListBean(String userid, String title, String subgenre, String maingenre) {
+	public PlayListBean(int playlistid, String title, String jacket, String maingenre, String subgenre) {
+		this.playlistid = playlistid;
 		this.title = title;
-		this.userid = userid;
+		this.jacket = jacket;
 		this.maingenre = maingenre;
 		this.subgenre = subgenre;
 	}
