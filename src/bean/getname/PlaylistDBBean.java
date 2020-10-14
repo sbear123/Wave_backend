@@ -29,7 +29,7 @@ public class PlaylistDBBean extends CommonDBBean {
 				MaingenreDBBean name = new MaingenreDBBean();
 				playlist.setMaingenre(name.getMaingenre(rs.getInt("maingenreid")));
 				SubgenreDBBean name1 = new SubgenreDBBean();
-				playlist.setSubgenre(name1.getSubgenre(rs.getInt("subgenreid")));
+				playlist.setSubgenre(name1.getSubgenre(rs.getInt("maingenreid"), rs.getInt("subgenreid")));
 			}
 			rs.close();
 			pstmt.close();

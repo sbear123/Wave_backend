@@ -1,7 +1,5 @@
 package wave.action.api;
 
-import java.util.ArrayList;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -9,8 +7,6 @@ import org.apache.commons.io.IOUtils;
 
 import com.google.gson.Gson;
 
-import bean.RegisterSongs1DBBean;
-import bean.RegisterSongs2Bean;
 import bean.RegisterSongs2DBBean;
 import bean.ResultBean;
 import bean.UserFavoritesBean;

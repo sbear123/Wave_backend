@@ -46,7 +46,7 @@ public class SongsDBBean extends CommonDBBean {
 					MaingenreDBBean name2 = new MaingenreDBBean();
 					song.setMaingenrename(name2.getMaingenre(song.getMaingenreid()));
 					SubgenreDBBean name3 = new SubgenreDBBean();
-					song.setSubgenrename(name3.getSubgenre(song.getSubgenreid()));
+					song.setSubgenrename(name3.getSubgenre(song.getMaingenreid(), song.getSubgenreid()));
 					AlbumDBBean name4 = new AlbumDBBean();
 					SongBean album = name4.getAlbum(song.getAlbumid());
 					song.setAlbumname(album.getAlbumname());

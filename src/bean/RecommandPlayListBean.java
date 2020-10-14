@@ -5,6 +5,7 @@ import java.util.List;
 public class RecommandPlayListBean {
 	private List<PlayListBean> list;
 	private String genreName;
+	private int genreId;
 	
 	public RecommandPlayListBean() {
 		this.list = null;
@@ -30,5 +31,13 @@ public class RecommandPlayListBean {
 
 	public void setGenreName(String genreName) {
 		this.genreName = genreName;
+	}
+
+	public int getGenreId() {
+		return genreId;
+	}
+
+	public void setGenreId(int genreId) {
+		this.genreId = genreId;
 	}
 }

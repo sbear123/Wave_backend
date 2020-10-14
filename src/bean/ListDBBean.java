@@ -5,10 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.sql.DataSource;
+import bean.getname.MaingenreDBBean;
+import bean.getname.PlaylistDBBean;
+import bean.getname.SubgenreDBBean;
 
 public class ListDBBean extends CommonDBBean {
 	//Singleton
@@ -22,13 +23,14 @@ public class ListDBBean extends CommonDBBean {
 
 	public ArrayList<RecommandPlayListBean> show(String userid) {
 		RecommandPlayListBean result = new RecommandPlayListBean();
+		ArrayList<RecommandPlayListBean> list = new ArrayList<>();
+		PlayListBean playlist = new PlayListBean();
+		List<PlayListBean> lists = new ArrayList<PlayListBean>();
+		MaingenreDBBean main = new MaingenreDBBean();
 		
 		int Maingenre=0;
 		int Subgenre1=0;
 		int Subgenre2=0;
-		
-		PlayListBean list = null;
-		ArrayList<PlayListBean> lists = new ArrayList<>();
 		
 		Connection conn = getConnection();
 		if(conn==null) return null;
@@ -39,10 +41,9 @@ public class ListDBBean extends CommonDBBean {
 			pstmt.setString(1, userid);
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {
-				
 				Maingenre = rs.getInt("maingenre");
-				Subgenre1 = rs.getInt("Subgenre1");
-				Subgenre2 = rs.getInt("Subgenre2");
+				Subgenre1 = rs.getInt("subgenre1");
+				Subgenre2 = rs.getInt("subgenre2");
 			}
 			rs.close();
 			pstmt.close();
@@ -51,114 +52,70 @@ public class ListDBBean extends CommonDBBean {
 			e.printStackTrace();
 		}
 		
-		ArrayList<String> jacketlist = new ArrayList<>();
-		for(int i = 1; i<=3; i++) {
-			jacketlist = getJacketUrl(Maingenre, Subgenre1, Subgenre2, i);
+		String sql1 = "select * from playlist where maingenreid=?";
+		try {
+			PreparedStatement pstmt1 = conn.prepareStatement(sql1);
+			pstmt1.setString(1, userid);
+			ResultSet rs = pstmt1.executeQuery();
+			while(rs.next()) {
+				int id = rs.getInt("playlistid");
+				PlaylistDBBean plist = new PlaylistDBBean();
+				playlist = plist.getlist(id);
+				lists.add(playlist);
+			}
+			rs.close();
+			pstmt1.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
-		for(String i : jacketlist) { //for문을 통한 전체출력
-		    System.out.println(i);
-		}
+		result.setGenreId(Maingenre);
+		result.setGenreName(main.getMaingenre(Maingenre));
+		result.setList(lists);
+		list.add(result);
 		
+		list.add(playlist(Maingenre, Subgenre1));
+		list.add(playlist(Maingenre, Subgenre2));
 		
-		return null;
+		return list;
 	}
 	
 	
 	
-	private ArrayList<String> getJacketUrl(int maingenre, int subgenre1, int subgenre2, int num) {
+	private RecommandPlayListBean playlist(int mainid, int subid) {
+		//서브장르받아오기 짜
+		RecommandPlayListBean result = new RecommandPlayListBean();
+		PlayListBean playlist = new PlayListBean();
+		List<PlayListBean> lists = new ArrayList<PlayListBean>();
+		SubgenreDBBean sub = new SubgenreDBBean();
+		
 		Connection conn = getConnection();
-		if (conn == null)
-			return null;
-		System.out.println("conn");
+		if(conn==null) return null;
 		
-		String genre = null;
-		int choose = 0;
-		int count = 0;
-		ArrayList<String> jacketlist = new ArrayList<>();
-		
-		switch(num) {
-		case 1:
-			genre = "maingenreid";
-			choose = maingenre;
-			break;
-		case 2:
-			genre = "subgenreid";
-			choose = subgenre1;
-			break;
-		case 3:
-			genre = "subgenreid";
-			choose = subgenre2;
-			break;
-		}
-		
-		String playlistsql = "select playlistid from playlist where" + genre +"= ?";
+		String sql1 = "select * from playlist where maingnreid=? subgenreid=?";
 		try {
-			PreparedStatement pstmt = conn.prepareStatement(playlistsql);
-			pstmt.setInt(1, choose);
-			ResultSet rs = pstmt.executeQuery();
-			while(rs.next() && count<3) {
-				count++;
-				ArrayList<Integer> playlist = new ArrayList<>();
-				playlist.add(rs.getInt("playlistid"));
-				
-				String songsql = "select songid from playlistsong where playlistid = ?";
-				try {
-					PreparedStatement pstmt1 = conn.prepareStatement(songsql);
-					for(Integer i : playlist) { //for문을 통한 전체출력
-						pstmt1.setInt(1, i);
-						ResultSet rs1 = pstmt1.executeQuery();
-						if(rs1.next()) {
-							//ArrayList<Integer> songlist = new ArrayList<>();
-							//songlist.add(rs.getInt("songid"));
-							int songid = (rs1.getInt("songid"));
-							
-							String albumsql = "select albumid from song where songid = ?";
-							try {
-								PreparedStatement pstmt2 = conn.prepareStatement(albumsql);
-									pstmt2.setInt(1, songid);
-									ResultSet rs2 = pstmt2.executeQuery();
-									if(rs2.next()) {
-										int albumid = rs2.getInt("albumid");
-										
-										String jacketsql = "select jacket from album where albumid = ?";
-										try {
-											PreparedStatement pstmt3 = conn.prepareStatement(jacketsql);
-											pstmt3.setInt(1, albumid);
-											ResultSet rs3 = pstmt3.executeQuery();
-											if(rs3.next()) {
-											jacketlist.add(rs3.getString("jacket"));
-											}
-											
-											rs3.close();
-											pstmt3.close();
-											
-										}catch (SQLException e) {
-											e.printStackTrace();
-										}
-										
-									}
-									rs2.close();
-									pstmt2.close();
-									
-								}catch(SQLException e) {
-								e.printStackTrace();
-							}
-						}
-					}
-					//rs1.close();
-					pstmt1.close();
-				}catch(SQLException e) {
-					e.printStackTrace();
-				}
-			
+			PreparedStatement pstmt1 = conn.prepareStatement(sql1);
+			pstmt1.setInt(1, mainid);
+			pstmt1.setInt(2, subid);
+			ResultSet rs = pstmt1.executeQuery();
+			while(rs.next()) {
+				int id = rs.getInt("playlistid");
+				PlaylistDBBean plist = new PlaylistDBBean();
+				playlist = plist.getlist(id);
+				lists.add(playlist);
 			}
 			rs.close();
-			pstmt.close();
-		}catch(SQLException e) {
+			pstmt1.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		return jacketlist;
+		result.setGenreId(subid);
+		result.setGenreName(sub.getSubgenre(mainid, subid));
+		result.setList(lists);
+		
+		return result;
 	}
 }
