@@ -1,30 +1,30 @@
 package bean;
 
 public class ArtistBean {
-	private int aritstid;
-	private String artistname;
+	private int aritstId;
+	private String artistName;
 	
 	public ArtistBean() {}
 	
 	public ArtistBean(int artistid, String artistname) {
-		this.aritstid = artistid;
-		this.artistname = artistname;
+		this.aritstId = artistid;
+		this.artistName = artistname;
 	}
 
 	public int getAritstid() {
-		return aritstid;
+		return aritstId;
 	}
 
 	public void setAritstid(int aritstid) {
-		this.aritstid = aritstid;
+		this.aritstId = aritstid;
 	}
 
 	public String getArtistname() {
-		return artistname;
+		return artistName;
 	}
 
 	public void setArtistname(String artistname) {
-		this.artistname = artistname;
+		this.artistName = artistname;
 	}
 	
 }

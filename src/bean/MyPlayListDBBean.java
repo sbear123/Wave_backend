@@ -30,11 +30,11 @@ public class MyPlayListDBBean extends CommonDBBean {
 			while(rs.next()) {
 				mylist = new MyPlaylistBean();
 				int listid = rs.getInt("playlistid");
-				mylist.setListid(listid);
+				mylist.setListId(listid);
 				PlaylistDBBean plist = new PlaylistDBBean();
-				mylist.setTitle(plist.getlist(listid).getTitle());
+				mylist.setListName(plist.getlist(listid).getTitle());
 				MyPlaylistBean my = getsong(listid);
-				mylist.setAmount(my.getAmount());
+				mylist.setSongCount(my.getSongCount());
 				mylist.setJacket(my.getJacket());
 				list.add(mylist);
 			}
@@ -72,7 +72,7 @@ public class MyPlayListDBBean extends CommonDBBean {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		song.setAmount(amount);
+		song.setSongCount(amount);
 		closeConnection(conn);
 		return song;
 	}

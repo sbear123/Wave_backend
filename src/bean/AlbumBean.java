@@ -1,33 +1,33 @@
 package bean;
 
 public class AlbumBean {
-	private int albumid;
-	private String albumname;
+	private int albumId;
+	private String albumName;
 	private String jacket;
-	private int aritstid;
-	private String artistname;
+	private int aritstId;
+	private String artistName;
 	
 	public AlbumBean() {}
 	
 	public AlbumBean(int albumid, String albumname) {
-		this.albumid = albumid;
-		this.albumname = albumname;
+		this.albumId = albumid;
+		this.albumName = albumname;
 	}
 
 	public int getAlbumid() {
-		return albumid;
+		return albumId;
 	}
 
 	public void setAlbumid(int albumid) {
-		this.albumid = albumid;
+		this.albumId = albumid;
 	}
 
 	public String getAlbumname() {
-		return albumname;
+		return albumName;
 	}
 
 	public void setAlbumname(String albumname) {
-		this.albumname = albumname;
+		this.albumName = albumname;
 	}
 
 	public String getJacket() {
@@ -39,19 +39,19 @@ public class AlbumBean {
 	}
 
 	public String getArtistname() {
-		return artistname;
+		return artistName;
 	}
 
 	public void setArtistname(String artistname) {
-		this.artistname = artistname;
+		this.artistName = artistname;
 	}
 
 	public int getAritstid() {
-		return aritstid;
+		return aritstId;
 	}
 
 	public void setAritstid(int aritstid) {
-		this.aritstid = aritstid;
+		this.aritstId = aritstid;
 	}
 	
 }

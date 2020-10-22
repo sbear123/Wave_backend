@@ -2,15 +2,15 @@ package bean;
 
 public class PwBean {
 	
-	private String userid;
+	private String userId;
 	private String orginPw;
 	private String newPw;
 	
 	public String getUserId() {
-		return userid;
+		return userId;
 	}
 	public void setUserId(String userId) {
-		this.userid = userId;
+		this.userId = userId;
 	}
 	
 	public String getOrginPw() {

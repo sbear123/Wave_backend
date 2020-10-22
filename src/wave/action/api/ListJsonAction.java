@@ -25,11 +25,12 @@ public class ListJsonAction implements Action {
 		
 		// input
 		String str = IOUtils.toString(request.getReader());
-		PlayListBean req = gson.fromJson(str, PlayListBean.class);
+		PlayListBean get = gson.fromJson(str, PlayListBean.class);
 		
-		result = ListDBBean.getInstance().show(req.getUserid());
+		result = ListDBBean.getInstance().show(get.getUserid());
+		String list = gson.toJson(result).toString();
 		
-		return gson.toJson(result, PlayListBean.class);
+		return list;
 	}
 
 }

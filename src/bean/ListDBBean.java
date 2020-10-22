@@ -28,9 +28,9 @@ public class ListDBBean extends CommonDBBean {
 		List<PlayListBean> lists = new ArrayList<PlayListBean>();
 		MaingenreDBBean main = new MaingenreDBBean();
 		
-		int Maingenre=0;
-		int Subgenre1=0;
-		int Subgenre2=0;
+		int maingenre = 0;
+		int subgenre1 = 0;
+		int subgenre2 = 0;
 		
 		Connection conn = getConnection();
 		if(conn==null) return null;
@@ -41,9 +41,9 @@ public class ListDBBean extends CommonDBBean {
 			pstmt.setString(1, userid);
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {
-				Maingenre = rs.getInt("maingenre");
-				Subgenre1 = rs.getInt("subgenre1");
-				Subgenre2 = rs.getInt("subgenre2");
+				maingenre = rs.getInt("maingenre");
+				subgenre1 = rs.getInt("subgenre1");
+				subgenre2 = rs.getInt("subgenre2");
 			}
 			rs.close();
 			pstmt.close();
@@ -55,7 +55,7 @@ public class ListDBBean extends CommonDBBean {
 		String sql1 = "select * from playlist where maingenreid=?";
 		try {
 			PreparedStatement pstmt1 = conn.prepareStatement(sql1);
-			pstmt1.setString(1, userid);
+			pstmt1.setInt(1, maingenre);
 			ResultSet rs = pstmt1.executeQuery();
 			while(rs.next()) {
 				int id = rs.getInt("playlistid");
@@ -70,13 +70,13 @@ public class ListDBBean extends CommonDBBean {
 			e.printStackTrace();
 		}
 		
-		result.setGenreId(Maingenre);
-		result.setGenreName(main.getMaingenre(Maingenre));
+		result.setGenreId(maingenre);
+		result.setGenreName(main.getMaingenre(maingenre));
 		result.setList(lists);
 		list.add(result);
 		
-		list.add(playlist(Maingenre, Subgenre1));
-		list.add(playlist(Maingenre, Subgenre2));
+		list.add(playlist(maingenre, subgenre1));
+		list.add(playlist(maingenre, subgenre2));
 		
 		return list;
 	}
@@ -93,19 +93,19 @@ public class ListDBBean extends CommonDBBean {
 		Connection conn = getConnection();
 		if(conn==null) return null;
 		
-		String sql1 = "select * from playlist where maingnreid=? subgenreid=?";
+		String sql1 = "select * from playlist where maingenreid=? And subgenreid=?";
 		try {
 			PreparedStatement pstmt1 = conn.prepareStatement(sql1);
 			pstmt1.setInt(1, mainid);
 			pstmt1.setInt(2, subid);
-			ResultSet rs = pstmt1.executeQuery();
-			while(rs.next()) {
-				int id = rs.getInt("playlistid");
+			ResultSet rs1 = pstmt1.executeQuery();
+			while(rs1.next()) {
+				int id = rs1.getInt("playlistid");
 				PlaylistDBBean plist = new PlaylistDBBean();
 				playlist = plist.getlist(id);
 				lists.add(playlist);
 			}
-			rs.close();
+			rs1.close();
 			pstmt1.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

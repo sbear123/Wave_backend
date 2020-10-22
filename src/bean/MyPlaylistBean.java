@@ -1,22 +1,22 @@
 package bean;
 
 public class MyPlaylistBean {
-	private int listid;
-	private int amount;
+	private int listId;
+	private int songCount;
 	private String jacket;
-	private String title;
+	private String listName;
 	
-	public int getListid() {
-		return listid;
+	public int getListId() {
+		return listId;
 	}
-	public void setListid(int listid) {
-		this.listid = listid;
+	public void setListId(int listId) {
+		this.listId = listId;
 	}
-	public int getAmount() {
-		return amount;
+	public int getSongCount() {
+		return songCount;
 	}
-	public void setAmount(int amount) {
-		this.amount = amount;
+	public void setSongCount(int songCount) {
+		this.songCount = songCount;
 	}
 	public String getJacket() {
 		return jacket;
@@ -24,10 +24,10 @@ public class MyPlaylistBean {
 	public void setJacket(String jacket) {
 		this.jacket = jacket;
 	}
-	public String getTitle() {
-		return title;
+	public String getListName() {
+		return listName;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+	public void setListName(String listName) {
+		this.listName = listName;
 	}
 }
