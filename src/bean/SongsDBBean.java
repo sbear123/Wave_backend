@@ -31,6 +31,7 @@ public class SongsDBBean extends CommonDBBean {
 				ResultSet rs = pstmt.executeQuery();
 				if(rs.next()) {
 					song = new SongBean();
+					song.setSongid(rs.getInt("songid"));
 					song.setTitle(rs.getString("title"));
 					song.setArtistid(rs.getInt("artistid"));
 					song.setMaingenreid(rs.getInt("maingenreid"));
@@ -38,7 +39,7 @@ public class SongsDBBean extends CommonDBBean {
 					song.setAlbumid(rs.getInt("albumid"));
 					song.setLyric(rs.getString("lyric"));
 					song.setSongurl(rs.getString("songurl"));
-					song.setWriter(rs.getString("songurl"));
+					song.setWriter(rs.getString("writer"));
 					song.setAge(rs.getInt("age"));
 					song.setGender(rs.getString("gender"));
 					ArtistDBBean name = new ArtistDBBean();
