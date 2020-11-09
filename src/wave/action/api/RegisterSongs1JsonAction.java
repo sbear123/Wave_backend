@@ -23,7 +23,7 @@ public class RegisterSongs1JsonAction implements Action {
 		String str = IOUtils.toString(request.getReader());
 		UserFavoritesBean requestgenre = gson.fromJson(str, UserFavoritesBean.class); 
 		
-		System.out.println(requestgenre.getGenre() + requestgenre.getId());
+		System.out.println(requestgenre.getMainGenreId() + requestgenre.getId());
 		int count = RegisterSongs1DBBean.getInstance().getGenre(requestgenre);
 		if(count==1)
 			result.result="ok";

@@ -29,7 +29,6 @@ public class MyPlaylistJsonAction implements Action{
 
 		String list = gson.toJson(mylist).toString();
 		System.out.println(list);
-		
 		return list;
 	}
 }

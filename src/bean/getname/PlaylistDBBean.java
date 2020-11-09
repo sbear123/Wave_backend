@@ -23,6 +23,9 @@ public class PlaylistDBBean extends CommonDBBean {
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {
 				playlist = new PlayListBean();
+				playlist.setPlaylistid(rs.getInt("playlistid"));
+				JacketDBBean jacket = new JacketDBBean();
+				playlist.setJacket(jacket.getJacket(id));
 				playlist.setUserid(rs.getString("userid"));
 				playlist.setDate(rs.getString("date"));
 				playlist.setTitle(rs.getString("title"));

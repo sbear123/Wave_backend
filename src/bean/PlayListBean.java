@@ -12,32 +12,9 @@ public class PlayListBean {
 	
 	private List<SongBean> song;
 	private String mainGenre;
+	private int mainGenreId;
 	private String subGenre;
-	
-	public PlayListBean() {}
-		
-	public PlayListBean(int playlistid, String userid, String date, String title, List<SongBean> songs, String subgenre, String maingenre) {
-		this.listId = playlistid;
-		this.userId = userid;
-		this.date = date;
-		this.listName = title;
-		this.jacket = songs.get(0).getJacket();
-		this.song = songs;
-		this.mainGenre = maingenre;
-		this.subGenre = subgenre;
-	}
-	
-	public PlayListBean(int playlistid, String title, String jacket, String maingenre, String subgenre) {
-		this.listId = playlistid;
-		this.listName = title;
-		this.jacket = jacket;
-		this.mainGenre = maingenre;
-		this.subGenre = subgenre;
-	}
-	
-	public PlayListBean(int playlistid) {
-		this.listId = playlistid;
-	}
+	private int subGenreId;
 
 	public String getMaingenre() {
 		return mainGenre;
@@ -101,6 +78,22 @@ public class PlayListBean {
 
 	public void setJacket(String jacket) {
 		this.jacket = jacket;
+	}
+
+	public int getMainGenreId() {
+		return mainGenreId;
+	}
+
+	public void setMainGenreId(int mainGenreId) {
+		this.mainGenreId = mainGenreId;
+	}
+
+	public int getSubGenreId() {
+		return subGenreId;
+	}
+
+	public void setSubGenreId(int subGenreId) {
+		this.subGenreId = subGenreId;
 	}
 	
 }
