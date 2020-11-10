@@ -8,10 +8,10 @@ import java.util.ArrayList;
 
 import bean.getname.PlaylistDBBean;
 
-public class MyPlayListDBBean extends CommonDBBean {
-	private static MyPlayListDBBean instance = new MyPlayListDBBean();
-	private MyPlayListDBBean() {}
-	public static MyPlayListDBBean getInstance() {
+public class LikeDBBean extends CommonDBBean {
+	private static LikeDBBean instance = new LikeDBBean();
+	private LikeDBBean() {}
+	public static LikeDBBean getInstance() {
 		return instance;
 	}
 	
@@ -26,6 +26,7 @@ public class MyPlayListDBBean extends CommonDBBean {
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, userid);
+			
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {
 				mylist = new MyPlaylistBean();
@@ -69,7 +70,6 @@ public class MyPlayListDBBean extends CommonDBBean {
 			rs.close();
 			pstmt.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		song.setSongCount(amount);

@@ -9,12 +9,12 @@ import org.apache.commons.io.IOUtils;
 
 import com.google.gson.Gson;
 
+import bean.LikeDBBean;
 import bean.MyPlaylistBean;
-import bean.MylistDBBean;
 import bean.UserBean;
 import wave.action.Action;
 
-public class MyPlaylistJsonAction implements Action{
+public class LikeJsonAction implements Action{
 	@Override
 	public String requestProcess(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		request.setCharacterEncoding("UTF-8");
@@ -25,7 +25,7 @@ public class MyPlaylistJsonAction implements Action{
 		UserBean requestUser = gson.fromJson(str, UserBean.class); 
 		
 		System.out.println(requestUser.getUserId());
-		ArrayList<MyPlaylistBean> mylist = MylistDBBean.getInstance().Mylist(requestUser.getUserId());
+		ArrayList<MyPlaylistBean> mylist = LikeDBBean.getInstance().Mylist(requestUser.getUserId());
 
 		String list = gson.toJson(mylist).toString();
 		System.out.println(list);

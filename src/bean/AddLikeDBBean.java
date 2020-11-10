@@ -4,11 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class AddMyListDBBean extends CommonDBBean {
+public class AddLikeDBBean extends CommonDBBean {
 	//Singleton
-	private static AddMyListDBBean instance = new AddMyListDBBean();
-	private AddMyListDBBean() {}
-	public static AddMyListDBBean getInstance() {
+	private static AddLikeDBBean instance = new AddLikeDBBean();
+	private AddLikeDBBean() {}
+	public static AddLikeDBBean getInstance() {
 		return instance;
 	}
 	

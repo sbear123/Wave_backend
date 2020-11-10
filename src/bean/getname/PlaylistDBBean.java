@@ -41,7 +41,6 @@ public class PlaylistDBBean extends CommonDBBean {
 			e.printStackTrace();
 		}
 		
-		
 		closeConnection(conn);
 		return playlist;
 	}

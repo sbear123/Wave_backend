@@ -1,6 +1,5 @@
 package wave.action.api;
 
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -8,12 +7,12 @@ import org.apache.commons.io.IOUtils;
 
 import com.google.gson.Gson;
 
-import bean.DeleteMylistDBBean;
+import bean.DeleteLikeDBBean;
 import bean.PlayListBean;
 import bean.ResultBean;
 import wave.action.Action;
 
-public class DeleteMyListJsonAction implements Action {
+public class DeleteLikeJsonAction implements Action {
 
 	@Override
 	public String requestProcess(HttpServletRequest request, HttpServletResponse response) throws Throwable {
@@ -26,7 +25,7 @@ public class DeleteMyListJsonAction implements Action {
 		
 		System.out.println(str);
 		
-		ResultBean result = DeleteMylistDBBean.getInstance().deleteMyList(requestUser.getUserid(), requestUser.getPlaylistid());
+		ResultBean result = DeleteLikeDBBean.getInstance().deleteMyList(requestUser.getUserid(), requestUser.getPlaylistid());
 		
 		return gson.toJson(result, ResultBean.class);
 	}

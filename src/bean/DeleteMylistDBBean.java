@@ -4,11 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class DeleteMyListDBBean extends CommonDBBean {
+public class DeleteMylistDBBean extends CommonDBBean {
 	//Singleton
-	private static DeleteMyListDBBean instance = new DeleteMyListDBBean();
-	private DeleteMyListDBBean() {}
-	public static DeleteMyListDBBean getInstance() {
+	private static DeleteMylistDBBean instance = new DeleteMylistDBBean();
+	private DeleteMylistDBBean() {}
+	public static DeleteMylistDBBean getInstance() {
 		return instance;
 	}
 	
@@ -19,7 +19,7 @@ public class DeleteMyListDBBean extends CommonDBBean {
 		if(conn == null) return null;
 		System.out.println("conn");
 		
-		String sql = "delete from mylist where userid = ? And playlistid = ?";
+		String sql = "delete from playlist where userid = ? And playlistid = ?";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, userid);

@@ -7,12 +7,12 @@ import org.apache.commons.io.IOUtils;
 
 import com.google.gson.Gson;
 
-import bean.AddMyListDBBean;
+import bean.AddLikeDBBean;
 import bean.PlayListBean;
 import bean.ResultBean;
 import wave.action.Action;
 
-public class AddMyListJsonAction implements Action {
+public class AddLikeJsonAction implements Action {
 
 	@Override
 	public String requestProcess(HttpServletRequest request, HttpServletResponse response) throws Throwable {
@@ -25,7 +25,7 @@ public class AddMyListJsonAction implements Action {
 		
 		System.out.println(str);
 		
-		ResultBean result = AddMyListDBBean.getInstance().addMyList(requestUser.getUserid(), requestUser.getPlaylistid());
+		ResultBean result = AddLikeDBBean.getInstance().addMyList(requestUser.getUserid(), requestUser.getPlaylistid());
 		
 		return gson.toJson(result, ResultBean.class);
 	}
