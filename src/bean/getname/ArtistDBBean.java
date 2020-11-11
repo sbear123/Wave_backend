@@ -18,11 +18,8 @@ public class ArtistDBBean extends CommonDBBean {
 		return instance;
 	}
 	
-	public String getArtist(int id){
+	public String getArtist(int id, Connection conn){
 		String name = "";
-		Connection conn = getConnection();
-		if(conn == null) return null;
-		System.out.println("conn");
 		
 		String sql = "select * from artist where artistid=?";
 		try {

@@ -38,11 +38,9 @@ public class RegisterSongs2DBBean extends CommonDBBean {
 			}
 			rs.close();
 			pstmt.close();
-			closeConnection(conn);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			closeConnection(conn);
 		}
 		
 		if (subgenre1 == favorite.getSubGenreId()) {
@@ -53,23 +51,20 @@ public class RegisterSongs2DBBean extends CommonDBBean {
 		} else {
 			sql = "UPDATE userfavorites set subgenre2 = ? where userid = ?";
 		}
-		Connection conn1 = getConnection();
-		if (conn1 == null)
-			return 0;
 		
 		try {
-			PreparedStatement pstmt = conn1.prepareStatement(sql);
+			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, favorite.getSubGenreId());
 			pstmt.setString(2, favorite.getId());
 
 			result = pstmt.executeUpdate();
 			if (pstmt != null)
 				pstmt.close();
-			closeConnection(conn1);
+			closeConnection(conn);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			closeConnection(conn1);
+			closeConnection(conn);
 		}
 
 		return result;

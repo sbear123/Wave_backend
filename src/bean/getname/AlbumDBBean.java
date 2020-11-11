@@ -19,11 +19,8 @@ public class AlbumDBBean extends CommonDBBean {
 			return instance;
 		}
 	
-	public SongBean getAlbum(int id){
+	public SongBean getAlbum(int id, Connection conn){
 		SongBean album = null;
-		Connection conn = getConnection();
-		if(conn == null) return null;
-		System.out.println("conn");
 		
 		String sql = "select * from album where albumid=?";
 		try {
@@ -37,11 +34,9 @@ public class AlbumDBBean extends CommonDBBean {
 			}
 			rs.close();
 			pstmt.close();
-			closeConnection(conn);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			closeConnection(conn);
 		}
 		
 		return album;

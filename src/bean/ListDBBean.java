@@ -29,7 +29,10 @@ public class ListDBBean extends CommonDBBean {
 		int subgenre2 = 0;
 		
 		Connection conn = getConnection();
-		if(conn==null) return null;
+		if(conn==null) {
+			System.out.println("ff");
+			return null;
+		}
 		
 		String sql = "Select * from wave.userfavorites where userid = ?";
 		try {
@@ -65,6 +68,10 @@ public class ListDBBean extends CommonDBBean {
 		
 		Connection conn = getConnection();
 		if(conn==null) return null;
+		System.out.println("conn");
+		
+		result.setGenreId(mainid);
+		result.setGenreName(MaingenreDBBean.getInstance().getMaingenre(mainid, conn));
 		
 		String sql1 = "select * from wave.playlist where maingenreid=?";
 		try {
@@ -73,7 +80,7 @@ public class ListDBBean extends CommonDBBean {
 			ResultSet rs = pstmt1.executeQuery();
 			while(rs.next()) {
 				int id = rs.getInt("playlistid");
-				playlist = PlaylistDBBean.getInstance().getlist(id);
+				playlist = PlaylistDBBean.getInstance().getlist(id, conn);
 				lists.add(playlist);
 			}
 			rs.close();
@@ -85,8 +92,6 @@ public class ListDBBean extends CommonDBBean {
 			closeConnection(conn);
 		}
 		
-		result.setGenreId(mainid);
-		result.setGenreName(MaingenreDBBean.getInstance().getMaingenre(mainid));
 		result.setList(lists);
 		
 		return result;
@@ -101,6 +106,8 @@ public class ListDBBean extends CommonDBBean {
 		Connection conn = getConnection();
 		if(conn==null) return null;
 		
+		result.setGenreId(subid);
+		result.setGenreName(SubgenreDBBean.getInstance().getSubgenre(mainid, subid, conn));
 		String sql2 = "select * from wave.playlist where maingenreid=? And subgenreid=?";
 		try {
 			PreparedStatement pstmt2 = conn.prepareStatement(sql2);
@@ -111,7 +118,7 @@ public class ListDBBean extends CommonDBBean {
 			while(rs1.next()) {
 				int id = rs1.getInt("playlistid");
 				System.out.println(id);
-				playlist = PlaylistDBBean.getInstance().getlist(id);
+				playlist = PlaylistDBBean.getInstance().getlist(id, conn);
 				lists.add(playlist);
 			}
 			rs1.close();
@@ -123,8 +130,6 @@ public class ListDBBean extends CommonDBBean {
 			closeConnection(conn);
 		}
 		
-		result.setGenreId(subid);
-		result.setGenreName(SubgenreDBBean.getInstance().getSubgenre(mainid, subid));
 		result.setList(lists);
 		
 		return result;

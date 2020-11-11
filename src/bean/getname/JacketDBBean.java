@@ -18,16 +18,11 @@ public class JacketDBBean extends CommonDBBean {
 		return instance;
 	}
 	
-	public String getJacket(int id){
+	public String getJacket(int id, Connection conn){
 		String jacket =  "";
 		int songid = 0;
-		Connection conn = getConnection();
-		if(conn == null) {
-			return "";
-		}
-		System.out.println("conn");
 		
-		songid = getFirstSong(id);
+		songid = getFirstSong(id, conn);
 		
 		if (songid == 0) {
 			return "";
@@ -39,26 +34,21 @@ public class JacketDBBean extends CommonDBBean {
 			pstmt.setInt(1, songid);
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {
-				jacket = AlbumDBBean.getInstance().getAlbum(rs.getInt("albumid")).getJacket();
+				jacket = AlbumDBBean.getInstance().getAlbum(rs.getInt("albumid"),conn).getJacket();
 				System.out.println(jacket);
 			}
 			rs.close();
 			pstmt.close();
-			closeConnection(conn);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			closeConnection(conn);
 		}
 		
 		return jacket;
 	}
 	
-	private int getFirstSong(int id) {
+	private int getFirstSong(int id, Connection conn) {
 		int songid = 0;
-		Connection conn = getConnection();
-		if(conn == null) return 0;
-		System.out.println("conn");
 		
 		String sql = "select * from playlistsong where playlistid=?";
 		try {
@@ -70,11 +60,9 @@ public class JacketDBBean extends CommonDBBean {
 			}
 			rs.close();
 			pstmt.close();
-			closeConnection(conn);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			closeConnection(conn);
 		}
 		return songid;
 	}

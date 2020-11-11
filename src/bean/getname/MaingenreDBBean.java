@@ -18,11 +18,8 @@ public class MaingenreDBBean extends CommonDBBean {
 			return instance;
 		}
 	
-	public String getMaingenre(int id){
+	public String getMaingenre(int id, Connection conn){
 		String name = "";
-		Connection conn = getConnection();
-		if(conn == null) return null;
-		System.out.println("conn");
 		
 		String sql = "select * from maingenre where maingenreid=?";
 		try {
@@ -34,11 +31,9 @@ public class MaingenreDBBean extends CommonDBBean {
 			}
 			rs.close();
 			pstmt.close();
-			closeConnection(conn);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			closeConnection(conn);
 		}
 		
 		return name;

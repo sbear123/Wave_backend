@@ -31,7 +31,7 @@ public class PwChangeDBBean extends CommonDBBean {
 				System.out.println(rs.getString("password"));
 				System.out.println(user.getOrginPw());
 				if (user.getOrginPw().equals(rs.getString("password"))) {
-					UpdatePassword(user.getUserId(), user.getNewPw());
+					UpdatePassword(user.getUserId(), user.getNewPw(), conn);
 					result = "ok";
 				}
 			}
@@ -47,11 +47,7 @@ public class PwChangeDBBean extends CommonDBBean {
 		
 	}
 	
-	private void UpdatePassword(String userid,String password) {
-		Connection conn = getConnection();
-		if(conn==null) {
-			return;
-		}
+	private void UpdatePassword(String userid,String password, Connection conn) {
 		
 		String updatePw = "UPDATE user set password = ? where userid = ?";
 		

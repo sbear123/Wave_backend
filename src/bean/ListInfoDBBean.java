@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import bean.getname.ArtistDBBean;
 import bean.getname.PlaylistDBBean;
 
 public class ListInfoDBBean extends CommonDBBean {
@@ -53,7 +52,7 @@ public class ListInfoDBBean extends CommonDBBean {
 			if(check) {
 				list = new PlayListBean();
 				list.setPlaylistid(listid);
-				PlayListBean samplelist = PlaylistDBBean.getInstance().getlist(listid);
+				PlayListBean samplelist = PlaylistDBBean.getInstance().getlist(listid,conn);
 				list.setDate(samplelist.getDate());
 				list.setMaingenre(samplelist.getMaingenre());
 				list.setSongs(songlist);

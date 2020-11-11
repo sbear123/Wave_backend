@@ -42,10 +42,10 @@ public class SongsDBBean extends CommonDBBean {
 					song.setWriter(rs.getString("writer"));
 					song.setAge(rs.getInt("age"));
 					song.setGender(rs.getString("gender"));
-					song.setArtistname(ArtistDBBean.getInstance().getArtist(song.getArtistid()));
-					song.setMaingenrename(MaingenreDBBean.getInstance().getMaingenre(song.getMaingenreid()));
-					song.setSubgenrename(SubgenreDBBean.getInstance().getSubgenre(song.getMaingenreid(), song.getSubgenreid()));
-					SongBean album = AlbumDBBean.getInstance().getAlbum(song.getAlbumid());
+					song.setArtistname(ArtistDBBean.getInstance().getArtist(song.getArtistid(),conn));
+					song.setMaingenrename(MaingenreDBBean.getInstance().getMaingenre(song.getMaingenreid(),conn));
+					song.setSubgenrename(SubgenreDBBean.getInstance().getSubgenre(song.getMaingenreid(), song.getSubgenreid(),conn));
+					SongBean album = AlbumDBBean.getInstance().getAlbum(song.getAlbumid(),conn);
 					song.setAlbumname(album.getAlbumname());
 					song.setJacket(album.getJacket());
 				}

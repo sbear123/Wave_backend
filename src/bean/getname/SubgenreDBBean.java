@@ -18,11 +18,8 @@ public class SubgenreDBBean extends CommonDBBean {
 			return instance;
 		}
 	
-	public String getSubgenre(int mainid, int subid){
+	public String getSubgenre(int mainid, int subid, Connection conn){
 		String name = "";
-		Connection conn = getConnection();
-		if(conn == null) return null;
-		System.out.println("conn");
 		
 		String sql = "select * from subgenre where maingenreid=? And subgenreid=?";
 		try {
@@ -35,11 +32,9 @@ public class SubgenreDBBean extends CommonDBBean {
 			}
 			rs.close();
 			pstmt.close();
-			closeConnection(conn);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			closeConnection(conn);
 		}
 		
 		return name;
