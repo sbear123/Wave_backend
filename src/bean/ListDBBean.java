@@ -22,10 +22,7 @@ public class ListDBBean extends CommonDBBean {
 	}
 
 	public ArrayList<RecommandPlayListBean> show(String userid) {
-		RecommandPlayListBean result = new RecommandPlayListBean();
 		ArrayList<RecommandPlayListBean> list = new ArrayList<>();
-		PlayListBean playlist = new PlayListBean();
-		List<PlayListBean> lists = new ArrayList<PlayListBean>();
 		
 		int maingenre = 0;
 		int subgenre1 = 0;
@@ -46,15 +43,33 @@ public class ListDBBean extends CommonDBBean {
 			}
 			rs.close();
 			pstmt.close();
+			closeConnection(conn);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			closeConnection(conn);
 		}
+		list.add(mainlist(maingenre));
+		
+		list.add(playlist(maingenre, subgenre1));
+		System.out.println(list);
+		list.add(playlist(maingenre, subgenre2));
+		
+		return list;
+	}
+	
+	public RecommandPlayListBean mainlist(int mainid) {
+		RecommandPlayListBean result = new RecommandPlayListBean();
+		PlayListBean playlist = new PlayListBean();
+		List<PlayListBean> lists = new ArrayList<PlayListBean>();
+		
+		Connection conn = getConnection();
+		if(conn==null) return null;
 		
 		String sql1 = "select * from wave.playlist where maingenreid=?";
 		try {
 			PreparedStatement pstmt1 = conn.prepareStatement(sql1);
-			pstmt1.setInt(1, maingenre);
+			pstmt1.setInt(1, mainid);
 			ResultSet rs = pstmt1.executeQuery();
 			while(rs.next()) {
 				int id = rs.getInt("playlistid");
@@ -63,23 +78,18 @@ public class ListDBBean extends CommonDBBean {
 			}
 			rs.close();
 			pstmt1.close();
+			closeConnection(conn);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} finally {
 			closeConnection(conn);
 		}
 		
-		result.setGenreId(maingenre);
-		result.setGenreName(MaingenreDBBean.getInstance().getMaingenre(maingenre));
+		result.setGenreId(mainid);
+		result.setGenreName(MaingenreDBBean.getInstance().getMaingenre(mainid));
 		result.setList(lists);
-		list.add(result);
 		
-		list.add(playlist(maingenre, subgenre1));
-		System.out.println(list);
-		list.add(playlist(maingenre, subgenre2));
-		
-		return list;
+		return result;
 	}
 	
 	public RecommandPlayListBean playlist(int mainid, int subid) {
@@ -106,10 +116,10 @@ public class ListDBBean extends CommonDBBean {
 			}
 			rs1.close();
 			pstmt2.close();
+			closeConnection(conn);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} finally {
 			closeConnection(conn);
 		}
 		

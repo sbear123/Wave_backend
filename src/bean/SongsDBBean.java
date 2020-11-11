@@ -51,10 +51,10 @@ public class SongsDBBean extends CommonDBBean {
 				}
 				rs.close();
 				pstmt.close();
+				closeConnection(conn);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			} finally {
 				closeConnection(conn);
 			}
 			

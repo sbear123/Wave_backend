@@ -38,15 +38,17 @@ public class PlaylistDBBean extends CommonDBBean {
 				playlist.setUserid(rs.getString("userid"));
 				playlist.setDate(rs.getString("date"));
 				playlist.setTitle(rs.getString("title"));
-				playlist.setMaingenre(MaingenreDBBean.getInstance().getMaingenre(rs.getInt("maingenreid")));
-				playlist.setSubgenre(SubgenreDBBean.getInstance().getSubgenre(rs.getInt("maingenreid"), rs.getInt("subgenreid")));
+				playlist.setMainGenreId(rs.getInt("maingenreid"));
+				playlist.setMaingenre(MaingenreDBBean.getInstance().getMaingenre(playlist.getMainGenreId()));
+				playlist.setSubGenreId(rs.getInt("subgenreid"));
+				playlist.setSubgenre(SubgenreDBBean.getInstance().getSubgenre(playlist.getMainGenreId(), playlist.getSubGenreId()));
 			}
 			rs.close();
 			pstmt.close();
+			closeConnection(conn1);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} finally {
 			closeConnection(conn1);
 		}
 		

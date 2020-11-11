@@ -41,10 +41,10 @@ public class MylistDBBean extends CommonDBBean {
 			}
 			rs.close();
 			pstmt.close();
+			closeConnection(conn);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} finally {
 			closeConnection(conn);
 		}
 		
@@ -71,9 +71,9 @@ public class MylistDBBean extends CommonDBBean {
 			}
 			rs.close();
 			pstmt.close();
+			closeConnection(conn);
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
 			closeConnection(conn);
 		}
 		

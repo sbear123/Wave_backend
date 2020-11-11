@@ -73,12 +73,11 @@ public class SearchDBBean extends CommonDBBean{
 			}
 			rs.close();
 			pstmt.close();
+			closeConnection(conn);
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
 			closeConnection(conn);
 		}
-		
 		result.setAlbum(albums);
 		result.setArtist(artists);
 		result.setSong(songs);
@@ -104,9 +103,9 @@ public class SearchDBBean extends CommonDBBean{
 			}
 			pstmts.close();
 			rss.close();
+			closeConnection(conn);
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
 			closeConnection(conn);
 		}
 		

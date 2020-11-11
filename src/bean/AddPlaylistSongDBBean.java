@@ -25,10 +25,10 @@ public class AddPlaylistSongDBBean extends CommonDBBean{
 			pstmt.setInt(2, plist.getSongid());
 			result = pstmt.executeUpdate();
 			if(pstmt!=null) pstmt.close();
+			closeConnection(conn);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} finally {
 			closeConnection(conn);
 		}
 		

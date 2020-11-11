@@ -28,11 +28,10 @@ public class RegisterDBBean extends CommonDBBean {
 				
 				result = pstmt.executeUpdate();
 				if(pstmt!=null) pstmt.close();
-				
+				closeConnection(conn);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			} finally {
 				closeConnection(conn);
 			}
 			
