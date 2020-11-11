@@ -3,7 +3,7 @@ package bean;
 public class AlbumBean {
 	private int albumId;
 	private String albumName;
-	private String jacket;
+	private String jacket = "";
 	private int aritstId;
 	private String artistName;
 	

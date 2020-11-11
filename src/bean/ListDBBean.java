@@ -26,7 +26,6 @@ public class ListDBBean extends CommonDBBean {
 		ArrayList<RecommandPlayListBean> list = new ArrayList<>();
 		PlayListBean playlist = new PlayListBean();
 		List<PlayListBean> lists = new ArrayList<PlayListBean>();
-		MaingenreDBBean main = new MaingenreDBBean();
 		
 		int maingenre = 0;
 		int subgenre1 = 0;
@@ -35,7 +34,7 @@ public class ListDBBean extends CommonDBBean {
 		Connection conn = getConnection();
 		if(conn==null) return null;
 		
-		String sql = "Select * from userfavorites where userid = ?";
+		String sql = "Select * from wave.userfavorites where userid = ?";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, userid);
@@ -52,15 +51,14 @@ public class ListDBBean extends CommonDBBean {
 			e.printStackTrace();
 		}
 		
-		String sql1 = "select * from playlist where maingenreid=?";
+		String sql1 = "select * from wave.playlist where maingenreid=?";
 		try {
 			PreparedStatement pstmt1 = conn.prepareStatement(sql1);
 			pstmt1.setInt(1, maingenre);
 			ResultSet rs = pstmt1.executeQuery();
 			while(rs.next()) {
 				int id = rs.getInt("playlistid");
-				PlaylistDBBean plist = new PlaylistDBBean();
-				playlist = plist.getlist(id);
+				playlist = PlaylistDBBean.getInstance().getlist(id);
 				lists.add(playlist);
 			}
 			rs.close();
@@ -68,52 +66,55 @@ public class ListDBBean extends CommonDBBean {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			closeConnection(conn);
 		}
 		
 		result.setGenreId(maingenre);
-		result.setGenreName(main.getMaingenre(maingenre));
+		result.setGenreName(MaingenreDBBean.getInstance().getMaingenre(maingenre));
 		result.setList(lists);
 		list.add(result);
 		
 		list.add(playlist(maingenre, subgenre1));
+		System.out.println(list);
 		list.add(playlist(maingenre, subgenre2));
 		
 		return list;
 	}
 	
-	
-	
-	private RecommandPlayListBean playlist(int mainid, int subid) {
+	public RecommandPlayListBean playlist(int mainid, int subid) {
 		//서브장르받아오기 짜
 		RecommandPlayListBean result = new RecommandPlayListBean();
 		PlayListBean playlist = new PlayListBean();
 		List<PlayListBean> lists = new ArrayList<PlayListBean>();
-		SubgenreDBBean sub = new SubgenreDBBean();
 		
 		Connection conn = getConnection();
 		if(conn==null) return null;
 		
-		String sql1 = "select * from playlist where maingenreid=? And subgenreid=?";
+		String sql2 = "select * from wave.playlist where maingenreid=? And subgenreid=?";
 		try {
-			PreparedStatement pstmt1 = conn.prepareStatement(sql1);
-			pstmt1.setInt(1, mainid);
-			pstmt1.setInt(2, subid);
-			ResultSet rs1 = pstmt1.executeQuery();
+			PreparedStatement pstmt2 = conn.prepareStatement(sql2);
+			pstmt2.setInt(1, mainid);
+			pstmt2.setInt(2, subid);
+			ResultSet rs1 = pstmt2.executeQuery();
+			
 			while(rs1.next()) {
 				int id = rs1.getInt("playlistid");
-				PlaylistDBBean plist = new PlaylistDBBean();
-				playlist = plist.getlist(id);
+				System.out.println(id);
+				playlist = PlaylistDBBean.getInstance().getlist(id);
 				lists.add(playlist);
 			}
 			rs1.close();
-			pstmt1.close();
+			pstmt2.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			closeConnection(conn);
 		}
 		
 		result.setGenreId(subid);
-		result.setGenreName(sub.getSubgenre(mainid, subid));
+		result.setGenreName(SubgenreDBBean.getInstance().getSubgenre(mainid, subid));
 		result.setList(lists);
 		
 		return result;

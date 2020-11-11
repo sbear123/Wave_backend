@@ -39,9 +39,10 @@ public class PwChangeDBBean extends CommonDBBean {
 			pstmt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			closeConnection(conn);
 		}
 		
-		closeConnection(conn);
 		return result;
 		
 	}
@@ -64,7 +65,8 @@ public class PwChangeDBBean extends CommonDBBean {
 			pstmt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			closeConnection(conn);
 		}
-		closeConnection(conn);
 	}
 }

@@ -30,12 +30,14 @@ public class AddLikeDBBean extends CommonDBBean {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			closeConnection(conn);
 		}
+		
 		if (count == 1) {
 			result.result = "ok";
 		}
 		
-		closeConnection(conn);
 		return result;
 	}
 }

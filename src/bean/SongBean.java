@@ -18,7 +18,7 @@ public class SongBean {
 	private String gender;
 	private int age;
 	private String writer;
-	private String jacket;
+	private String jacket = "";
 	
 	public SongBean(){}
 	

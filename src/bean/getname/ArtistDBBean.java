@@ -9,6 +9,15 @@ import bean.CommonDBBean;
 
 public class ArtistDBBean extends CommonDBBean {
 	
+	//Singleton
+	private static ArtistDBBean instance = new ArtistDBBean();
+	
+	private ArtistDBBean() {}
+	
+	public static ArtistDBBean getInstance() {
+		return instance;
+	}
+	
 	public String getArtist(int id){
 		String name = "";
 		Connection conn = getConnection();
@@ -28,10 +37,10 @@ public class ArtistDBBean extends CommonDBBean {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			closeConnection(conn);
 		}
 		
-		
-		closeConnection(conn);
 		return name;
 	}
 }

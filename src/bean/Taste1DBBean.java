@@ -36,10 +36,10 @@ public class Taste1DBBean extends CommonDBBean {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			closeConnection(conn);
 		}
 		
-		
-		closeConnection(conn);
 		return list;
 	}
 }

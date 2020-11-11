@@ -18,7 +18,7 @@ public class AddPlaylistSongDBBean extends CommonDBBean{
 		if(conn==null) return 0;
 		System.out.println("conn");
 		
-		String sql = "insert into playlistsong(playlistid, songid) values (?,?)";
+		String sql = "insert into wave.playlistsong(playlistid, songid) values (?,?)";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, plist.getPlaylistid());
@@ -28,9 +28,10 @@ public class AddPlaylistSongDBBean extends CommonDBBean{
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			closeConnection(conn);
 		}
 		
-		closeConnection(conn);
 		return result;
 	}
 }

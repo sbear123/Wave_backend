@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import bean.getname.ArtistDBBean;
 import bean.getname.PlaylistDBBean;
 
 public class MylistDBBean extends CommonDBBean {
@@ -31,11 +32,11 @@ public class MylistDBBean extends CommonDBBean {
 				mylist = new MyPlaylistBean();
 				int listid = rs.getInt("playlistid");
 				mylist.setListId(listid);
-				PlaylistDBBean plist = new PlaylistDBBean();
-				mylist.setListName(plist.getlist(listid).getTitle());
+				mylist.setListName(PlaylistDBBean.getInstance().getlist(listid).getTitle());
 				MyPlaylistBean my = getsong(listid);
 				mylist.setSongCount(my.getSongCount());
 				mylist.setJacket(my.getJacket());
+				System.out.println(mylist);
 				list.add(mylist);
 			}
 			rs.close();
@@ -43,8 +44,10 @@ public class MylistDBBean extends CommonDBBean {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			closeConnection(conn);
 		}
-		closeConnection(conn);
+		
 		return list;
 	}
 	
@@ -70,9 +73,11 @@ public class MylistDBBean extends CommonDBBean {
 			pstmt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			closeConnection(conn);
 		}
+		
 		song.setSongCount(amount);
-		closeConnection(conn);
 		return song;
 	}
 }

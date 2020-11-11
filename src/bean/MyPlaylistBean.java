@@ -3,7 +3,7 @@ package bean;
 public class MyPlaylistBean {
 	private int listId;
 	private int songCount;
-	private String jacket;
+	private String jacket = "";
 	private String listName;
 	
 	public int getListId() {

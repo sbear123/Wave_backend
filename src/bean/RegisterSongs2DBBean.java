@@ -42,6 +42,7 @@ public class RegisterSongs2DBBean extends CommonDBBean {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		if (subgenre1 == favorite.getSubGenreId()) {
 			return 0;
 		}
@@ -62,9 +63,9 @@ public class RegisterSongs2DBBean extends CommonDBBean {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			closeConnection(conn);
 		}
-
-		closeConnection(conn);
 
 		return result;
 	}

@@ -42,14 +42,10 @@ public class SongsDBBean extends CommonDBBean {
 					song.setWriter(rs.getString("writer"));
 					song.setAge(rs.getInt("age"));
 					song.setGender(rs.getString("gender"));
-					ArtistDBBean name = new ArtistDBBean();
-					song.setArtistname(name.getArtist(song.getArtistid()));
-					MaingenreDBBean name2 = new MaingenreDBBean();
-					song.setMaingenrename(name2.getMaingenre(song.getMaingenreid()));
-					SubgenreDBBean name3 = new SubgenreDBBean();
-					song.setSubgenrename(name3.getSubgenre(song.getMaingenreid(), song.getSubgenreid()));
-					AlbumDBBean name4 = new AlbumDBBean();
-					SongBean album = name4.getAlbum(song.getAlbumid());
+					song.setArtistname(ArtistDBBean.getInstance().getArtist(song.getArtistid()));
+					song.setMaingenrename(MaingenreDBBean.getInstance().getMaingenre(song.getMaingenreid()));
+					song.setSubgenrename(SubgenreDBBean.getInstance().getSubgenre(song.getMaingenreid(), song.getSubgenreid()));
+					SongBean album = AlbumDBBean.getInstance().getAlbum(song.getAlbumid());
 					song.setAlbumname(album.getAlbumname());
 					song.setJacket(album.getJacket());
 				}
@@ -58,10 +54,10 @@ public class SongsDBBean extends CommonDBBean {
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+			} finally {
+				closeConnection(conn);
 			}
 			
-			
-			closeConnection(conn);
 			return song;
 		}
 }

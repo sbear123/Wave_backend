@@ -9,6 +9,15 @@ import bean.CommonDBBean;
 
 public class JacketDBBean extends CommonDBBean {
 	
+	//Singleton
+			private static JacketDBBean instance = new JacketDBBean();
+			
+			private JacketDBBean() {}
+			
+			public static JacketDBBean getInstance() {
+				return instance;
+			}
+	
 	public String getJacket(int id){
 		String jacket =  "";
 		int songid = 0;
@@ -40,17 +49,18 @@ public class JacketDBBean extends CommonDBBean {
 			pstmt.setInt(1, id);
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {
-				AlbumDBBean album = new AlbumDBBean();
-				jacket = album.getAlbum(rs.getInt("albumid")).getJacket();
+				jacket = AlbumDBBean.getInstance().getAlbum(rs.getInt("albumid")).getJacket();
+				System.out.println(jacket);
 			}
 			rs.close();
 			pstmt.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			closeConnection(conn);
 		}
 		
-		closeConnection(conn);
 		return jacket;
 	}
 }

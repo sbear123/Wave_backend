@@ -10,6 +10,15 @@ import bean.SongBean;
 
 public class AlbumDBBean extends CommonDBBean {
 	
+	//Singleton
+		private static AlbumDBBean instance = new AlbumDBBean();
+		
+		private AlbumDBBean() {}
+		
+		public static AlbumDBBean getInstance() {
+			return instance;
+		}
+	
 	public SongBean getAlbum(int id){
 		SongBean album = null;
 		Connection conn = getConnection();
@@ -31,10 +40,10 @@ public class AlbumDBBean extends CommonDBBean {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			closeConnection(conn);
 		}
 		
-		
-		closeConnection(conn);
 		return album;
 	}
 }

@@ -9,6 +9,15 @@ import bean.CommonDBBean;
 
 public class MaingenreDBBean extends CommonDBBean {
 	
+	//Singleton
+		private static MaingenreDBBean instance = new MaingenreDBBean();
+		
+		private MaingenreDBBean() {}
+		
+		public static MaingenreDBBean getInstance() {
+			return instance;
+		}
+	
 	public String getMaingenre(int id){
 		String name = "";
 		Connection conn = getConnection();
@@ -28,10 +37,10 @@ public class MaingenreDBBean extends CommonDBBean {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			closeConnection(conn);
 		}
 		
-		
-		closeConnection(conn);
 		return name;
 	}
 }

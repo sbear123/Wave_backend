@@ -19,7 +19,7 @@ public class CreateListDBBean extends CommonDBBean{
 		Connection conn = getConnection();
 		if(conn==null) return 0;
 		
-		String sql = "insert into playlist(userid, title, maingenreid, subgenreid, date) values (?,?,?,?,?)";
+		String sql = "insert into wave.playlist(userid, title, maingenreid, subgenreid, date) values (?,?,?,?,?)";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, list.getUserid());
@@ -38,9 +38,10 @@ public class CreateListDBBean extends CommonDBBean{
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			closeConnection(conn);
 		}
-
-		closeConnection(conn);
+		
 		return result;
 	}
 }

@@ -19,7 +19,7 @@ public class DeleteMylistDBBean extends CommonDBBean {
 		if(conn == null) return null;
 		System.out.println("conn");
 		
-		String sql = "delete from playlist where userid = ? And playlistid = ?";
+		String sql = "delete from wave.playlist where userid = ? And playlistid = ?";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, userid);
@@ -30,12 +30,14 @@ public class DeleteMylistDBBean extends CommonDBBean {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			closeConnection(conn);
 		}
+		
 		if (count == 1) {
 			result.result = "ok";
 		}
 		
-		closeConnection(conn);
 		return result;
 	}
 }

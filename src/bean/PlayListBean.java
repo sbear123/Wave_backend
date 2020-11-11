@@ -8,7 +8,7 @@ public class PlayListBean {
 	private String userId;
 	private String date;
 	private String listName;
-	private String jacket;
+	private String jacket = "";
 	
 	private List<SongBean> song;
 	private String mainGenre;

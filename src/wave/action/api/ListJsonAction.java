@@ -29,6 +29,7 @@ public class ListJsonAction implements Action {
 		
 		result = ListDBBean.getInstance().show(get.getUserid());
 		String list = gson.toJson(result).toString();
+		System.out.println(list);
 		
 		return list;
 	}

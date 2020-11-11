@@ -18,7 +18,7 @@ public class DeletePlaylistSongDBBean extends CommonDBBean {
 		Connection conn = getConnection();
 		if(conn==null) return 0;
 
-		String sql = "delete from playlistsong where playlistid = "+playlistid+" And songid ="+ songid;
+		String sql = "delete from wave.playlistsong where playlistid = "+playlistid+" And songid ="+ songid;
 
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -29,9 +29,10 @@ public class DeletePlaylistSongDBBean extends CommonDBBean {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			closeConnection(conn);
 		}
-
-		closeConnection(conn);
+		
 		return result;
 	}
 }

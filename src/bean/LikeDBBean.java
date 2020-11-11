@@ -22,7 +22,7 @@ public class LikeDBBean extends CommonDBBean {
 		if(conn == null) return null;
 		System.out.println("conn");
 		
-		String sql = "select * from mylist where userid=?";
+		String sql = "select * from wave.mylist where userid=?";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, userid);
@@ -32,8 +32,7 @@ public class LikeDBBean extends CommonDBBean {
 				mylist = new MyPlaylistBean();
 				int listid = rs.getInt("playlistid");
 				mylist.setListId(listid);
-				PlaylistDBBean plist = new PlaylistDBBean();
-				mylist.setListName(plist.getlist(listid).getTitle());
+				mylist.setListName(PlaylistDBBean.getInstance().getlist(listid).getTitle());
 				MyPlaylistBean my = getsong(listid);
 				mylist.setSongCount(my.getSongCount());
 				mylist.setJacket(my.getJacket());
@@ -44,8 +43,10 @@ public class LikeDBBean extends CommonDBBean {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			closeConnection(conn);
 		}
-		closeConnection(conn);
+		
 		return list;
 	}
 	
@@ -56,7 +57,7 @@ public class LikeDBBean extends CommonDBBean {
 		if(conn == null) return null;
 		System.out.println("conn");
 		
-		String sql = "select * from playlistsong where playlistid=?";
+		String sql = "select * from wave.playlistsong where playlistid=?";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, playlistid);
@@ -71,9 +72,10 @@ public class LikeDBBean extends CommonDBBean {
 			pstmt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			closeConnection(conn);
 		}
 		song.setSongCount(amount);
-		closeConnection(conn);
 		return song;
 	}
 }

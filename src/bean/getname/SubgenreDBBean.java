@@ -9,6 +9,15 @@ import bean.CommonDBBean;
 
 public class SubgenreDBBean extends CommonDBBean {
 	
+	//Singleton
+		private static SubgenreDBBean instance = new SubgenreDBBean();
+		
+		private SubgenreDBBean() {}
+		
+		public static SubgenreDBBean getInstance() {
+			return instance;
+		}
+	
 	public String getSubgenre(int mainid, int subid){
 		String name = "";
 		Connection conn = getConnection();
@@ -29,10 +38,10 @@ public class SubgenreDBBean extends CommonDBBean {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			closeConnection(conn);
 		}
 		
-		
-		closeConnection(conn);
 		return name;
 	}
 }
