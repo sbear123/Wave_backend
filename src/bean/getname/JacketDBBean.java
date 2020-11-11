@@ -35,7 +35,6 @@ public class JacketDBBean extends CommonDBBean {
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {
 				jacket = AlbumDBBean.getInstance().getAlbum(rs.getInt("albumid"),conn).getJacket();
-				System.out.println(jacket);
 			}
 			rs.close();
 			pstmt.close();

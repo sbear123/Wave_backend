@@ -43,7 +43,7 @@ public class SearchDBBean extends CommonDBBean{
 				album.setAlbumname(rs.getString("name"));
 				album.setAritstid(rs.getInt("artistid"));
 				album.setJacket(rs.getString("jacket"));
-				album.setArtistname(artistname(rs.getInt("artistid")));
+				album.setArtistname(artistname(rs.getInt("artistid"),conn));
 				albums.add(album);
 			}
 			pstmt = conn.prepareStatement(artistsql);
@@ -62,7 +62,7 @@ public class SearchDBBean extends CommonDBBean{
 				song = new SongBean();
 				song.setAlbumid(rs.getInt("albumid"));
 				song.setArtistid(rs.getInt("artistid"));
-				song.setArtistname(artistname(rs.getInt("artistid")));
+				song.setArtistname(artistname(rs.getInt("artistid"), conn));
 				song.setMaingenreid(rs.getInt("maingenreid"));
 				song.setSongid(rs.getInt("songid"));
 				song.setSongurl(rs.getString("songurl"));
@@ -85,12 +85,8 @@ public class SearchDBBean extends CommonDBBean{
 		return result;
 	}
 	
-	private String artistname(int artistid) {
-		Connection conn = getConnection();
+	private String artistname(int artistid, Connection conn) {
 		String artistname = "";
-		if (conn == null)
-			return null;
-		System.out.println("conn");
 		
 		String albumsql = "select * from artist where artistid=?";
 		
@@ -103,10 +99,8 @@ public class SearchDBBean extends CommonDBBean{
 			}
 			pstmts.close();
 			rss.close();
-			closeConnection(conn);
 		} catch (Exception e) {
 			e.printStackTrace();
-			closeConnection(conn);
 		}
 		
 		return artistname;

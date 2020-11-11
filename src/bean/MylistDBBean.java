@@ -18,6 +18,7 @@ public class MylistDBBean extends CommonDBBean {
 	public ArrayList<MyPlaylistBean> Mylist(String userid) {
 		MyPlaylistBean mylist = null;
 		ArrayList<MyPlaylistBean> list = new ArrayList<>();
+		
 		Connection conn = getConnection();
 		if(conn == null) return null;
 		System.out.println("conn");
@@ -35,7 +36,6 @@ public class MylistDBBean extends CommonDBBean {
 				MyPlaylistBean my = getsong(listid, conn);
 				mylist.setSongCount(my.getSongCount());
 				mylist.setJacket(my.getJacket());
-				System.out.println(mylist);
 				list.add(mylist);
 			}
 			rs.close();
@@ -62,15 +62,13 @@ public class MylistDBBean extends CommonDBBean {
 			while(rs.next()) {
 				amount++;
 				if (amount == 1) {
-					song.setJacket(SongsDBBean.getInstance().getSong(rs.getInt("songid")).getJacket());
+					song.setJacket(SongsDBBean.getInstance().getSong(rs.getInt("songid"), conn).getJacket());
 				}
 			}
 			rs.close();
 			pstmt.close();
-			closeConnection(conn);
 		} catch (SQLException e) {
 			e.printStackTrace();
-			closeConnection(conn);
 		}
 		
 		song.setSongCount(amount);

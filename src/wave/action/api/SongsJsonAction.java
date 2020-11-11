@@ -1,5 +1,7 @@
 package wave.action.api;
 
+import java.sql.Connection;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -21,7 +23,9 @@ public class SongsJsonAction implements Action {
 		String str = IOUtils.toString(request.getReader());
 		SongBean input = gson.fromJson(str, SongBean.class);
 		
-		SongBean song = SongsDBBean.getInstance().getSong(input.getSongid());
+		Connection conn = null;
+		
+		SongBean song = SongsDBBean.getInstance().getSong(input.getSongid(),conn);
 		
 		return gson.toJson(song, SongBean.class);
 	}

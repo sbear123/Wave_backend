@@ -62,7 +62,7 @@ public class LikeDBBean extends CommonDBBean {
 			while(rs.next()) {
 				amount++;
 				if (amount == 1) {
-					song.setJacket(SongsDBBean.getInstance().getSong(rs.getInt("songid")).getJacket());
+					song.setJacket(SongsDBBean.getInstance().getSong(rs.getInt("songid"),conn).getJacket());
 				}
 			}
 			rs.close();

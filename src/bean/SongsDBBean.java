@@ -18,11 +18,14 @@ public class SongsDBBean extends CommonDBBean {
 			return instance;
 		}
 		
-		public SongBean getSong(int songid){
+		public SongBean getSong(int songid, Connection conn){
 			SongBean song = null;
-			Connection conn = getConnection();
-			if(conn == null) return null;
-			System.out.println("conn");
+			int setConn = 0;
+			
+			if (conn == null) {
+				conn =  getConnection();
+				setConn = 1;
+			}
 			
 			String sql = "select * from song where songid=?";
 			try {
@@ -51,11 +54,11 @@ public class SongsDBBean extends CommonDBBean {
 				}
 				rs.close();
 				pstmt.close();
-				closeConnection(conn);
+				if(setConn != 0) closeConnection(conn);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-				closeConnection(conn);
+				if(setConn != 0) closeConnection(conn);
 			}
 			
 			return song;
