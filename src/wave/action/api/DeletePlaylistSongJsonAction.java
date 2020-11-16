@@ -23,8 +23,8 @@ public class DeletePlaylistSongJsonAction implements Action{
 		String str = IOUtils.toString(request.getReader());
 		PListBean list = gson.fromJson(str, PListBean.class);
 
-		System.out.println(list.getPlaylistid());
-		int count = DeletePlaylistSongDBBean.getInstance().DeleteSong(list.getPlaylistid(), list.getSongid());
+		System.out.println(list.getlistId());
+		int count = DeletePlaylistSongDBBean.getInstance().DeleteSong(list.getlistId(), list.getSongid());
 
 		if(count==1)
 			result.result="ok";

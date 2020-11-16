@@ -8,17 +8,17 @@ import java.util.ArrayList;
 
 import bean.getname.JacketDBBean;
 
-public class SearchDBBean extends CommonDBBean{
+public class SearchAllDBBean extends CommonDBBean{
 	// Singleton
-	private static SearchDBBean instance = new SearchDBBean();
+	private static SearchAllDBBean instance = new SearchAllDBBean();
 
-	private SearchDBBean() {}
+	private SearchAllDBBean() {}
 
-	public static SearchDBBean getInstance() {
+	public static SearchAllDBBean getInstance() {
 		return instance;
 	}
 
-	public SearchBean search(String keyword) {
+	public SearchBean searchAll() {
 		SearchBean result = new SearchBean();
 		AlbumBean album = null;
 		ArtistBean artist = null;
@@ -31,13 +31,12 @@ public class SearchDBBean extends CommonDBBean{
 			return null;
 		System.out.println("conn");
 		
-		String albumsql = "select * from album where name LIKE ?";
-		String artistsql = "select * from artist where name LIKE ?";
-		String songsql = "select * from song where title LIKE ?";
+		String albumsql = "select * from album";
+		String artistsql = "select * from artist";
+		String songsql = "select * from song";
 		
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(albumsql);
-			pstmt.setString(1, ("%"+keyword+"%"));
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				album = new AlbumBean();
@@ -48,8 +47,8 @@ public class SearchDBBean extends CommonDBBean{
 				album.setArtistname(artistname(rs.getInt("artistid"),conn));
 				albums.add(album);
 			}
+			
 			pstmt = conn.prepareStatement(artistsql);
-			pstmt.setString(1, ("%"+keyword+"%"));
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				artist = new ArtistBean();
@@ -57,8 +56,8 @@ public class SearchDBBean extends CommonDBBean{
 				artist.setArtistname(rs.getString("name"));
 				artists.add(artist);
 			}
+			
 			pstmt = conn.prepareStatement(songsql);
-			pstmt.setString(1, ("%"+keyword+"%"));
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				song = new SongBean();

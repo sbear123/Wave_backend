@@ -25,6 +25,7 @@ public class SongsDBBean extends CommonDBBean {
 			if (conn == null) {
 				conn =  getConnection();
 				setConn = 1;
+				System.out.println("conn");
 			}
 			
 			String sql = "select * from song where songid=?";

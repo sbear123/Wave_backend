@@ -30,7 +30,7 @@ public class PlaylistDBBean extends CommonDBBean {
 			if(rs.next()) {
 				playlist = new PlayListBean();
 				playlist.setPlaylistid(rs.getInt("playlistid"));
-				playlist.setJacket(JacketDBBean.getInstance().getJacket(id, conn));
+				playlist.setJacket(JacketDBBean.getInstance().Jacket(id, conn));
 				playlist.setUserid(rs.getString("userid"));
 				playlist.setDate(rs.getString("date"));
 				playlist.setTitle(rs.getString("title"));

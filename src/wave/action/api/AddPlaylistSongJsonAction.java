@@ -24,9 +24,9 @@ public class AddPlaylistSongJsonAction implements Action{
 		String str = IOUtils.toString(request.getReader());
 		PListBean requestList = gson.fromJson(str, PListBean.class); 
 		
-		System.out.println(requestList.getPlaylistid() + requestList.getSongid());
+		System.out.println(requestList.getlistId() + requestList.getSongid());
 		int count = AddPlaylistSongDBBean.getInstance().add(requestList);
-		if(count==1)
+		if(count == 1)
 			result.result="ok"; 
 		
 		return gson.toJson(result, ResultBean.class);

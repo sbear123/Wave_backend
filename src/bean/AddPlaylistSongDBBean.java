@@ -21,7 +21,7 @@ public class AddPlaylistSongDBBean extends CommonDBBean{
 		String sql = "insert into wave.playlistsong(playlistid, songid) values (?,?)";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, plist.getPlaylistid());
+			pstmt.setInt(1, plist.getlistId());
 			pstmt.setInt(2, plist.getSongid());
 			result = pstmt.executeUpdate();
 			if(pstmt!=null) pstmt.close();

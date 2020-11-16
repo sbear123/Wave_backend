@@ -1,26 +1,15 @@
 package bean;
 
 public class PListBean {
-	private int playlistId;
+	private int listId;
 	private int songId;
-	
-	public PListBean() {}
-	
-	public PListBean(int playlistid) {
-		this.playlistId = playlistid;
-	}
-	
-	public PListBean(int playlistid, int songid) {
-		this.playlistId = playlistid;
-		this.songId = songid;
+
+	public int getlistId() {
+		return listId;
 	}
 
-	public int getPlaylistid() {
-		return playlistId;
-	}
-
-	public void setPlaylistid(int playlistid) {
-		this.playlistId = playlistid;
+	public void setlistId(int listId) {
+		this.listId = listId;
 	}
 
 	public int getSongid() {

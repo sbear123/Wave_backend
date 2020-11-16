@@ -61,7 +61,7 @@ public class ListDBBean extends CommonDBBean {
 		return list;
 	}
 	
-	public RecommandPlayListBean mainlist(int mainid) {
+	private RecommandPlayListBean mainlist(int mainid) {
 		RecommandPlayListBean result = new RecommandPlayListBean();
 		PlayListBean playlist = new PlayListBean();
 		List<PlayListBean> lists = new ArrayList<PlayListBean>();
@@ -97,7 +97,7 @@ public class ListDBBean extends CommonDBBean {
 		return result;
 	}
 	
-	public RecommandPlayListBean playlist(int mainid, int subid) {
+	private RecommandPlayListBean playlist(int mainid, int subid) {
 		//서브장르받아오기 짜
 		RecommandPlayListBean result = new RecommandPlayListBean();
 		PlayListBean playlist = new PlayListBean();
