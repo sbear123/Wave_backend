@@ -1,6 +1,7 @@
 package bean;
 
 public class PListBean {
+	private String userId;
 	private int listId;
 	private int songId;
 
@@ -18,6 +19,14 @@ public class PListBean {
 
 	public void setSongid(int songid) {
 		this.songId = songid;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 	
 }
